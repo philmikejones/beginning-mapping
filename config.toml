@@ -1,0 +1,50 @@
+baseURL = "/"
+languageCode = "en-GB"
+# defaultContentLanguage = "en"
+
+title = "Beginning mapping"
+theme = "hugo-theme-learn"
+themesdir = "themes"
+metaDataFormat = "yaml"
+defaultContentLanguageInSubdir=false
+
+[params]
+  editURL = "https://github.com/philmikejones/beginning-mapping/edit/master/content/"
+  author = "Phil Mike Jones"
+  description = "Beginning mapping and spatial analysis for social researchers"
+  showVisitedLinks = true
+  disableSearch = false
+  disableAssetsBusting = false
+  disableInlineCopyToClipBoard = false
+  # A title for shortcuts in menu is set by default. Set this to true to disable it.
+  disableShortcutsTitle = false
+  # When using mulitlingual website, disable the switch language button.
+  disableLanguageSwitchingButton = true
+  # Order sections in menu by "weight" or "title". Default to "weight"
+  ordersectionsby = "weight"
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "green"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-camera'></i> Showcases"
+url = "showcase"
+weight = 10
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-code-fork'></i> Contribute"
+url = "contribute"
+weight = 20
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-github'></i> Github repo"
+identifier = "ds"
+url = "https://github.com/philmikejones/beginning-mapping/"
+weight = 30
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-bullhorn'></i> About"
+url = "/about"
+weight = 40
