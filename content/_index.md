@@ -2,6 +2,8 @@
 title: "Beginning mapping"
 ---
 
+![UK orthographic projection](../images/uk_orthographic_projection.png)
+
 Welcome to beginning mapping and spatial analysis for social researchers course.
 By the end of this course you will be able to:
 
