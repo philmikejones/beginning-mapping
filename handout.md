@@ -1,8 +1,9 @@
-# Beginning mapping
-
 ![UK orthographic projection](images/uk_orthographic_projection.png)
 
+# Beginning mapping
+
 Welcome to beginning mapping and spatial analysis for social researchers course.
+
 
 ## About your instructor
 
