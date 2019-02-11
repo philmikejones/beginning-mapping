@@ -1,2 +1,5 @@
 # ignore compiled files; built by netlify
 public/
+
+# compiled pdfs
+*.pdf
