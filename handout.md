@@ -130,6 +130,34 @@ https://census.ukdataservice.ac.uk/get-data/boundary-data.aspx
 
 This service offers a comprehensive range of high quality shapefiles covering a range of administrative geographies for all of the UK.
 
+For our first map we will make a simple plot of regions in Great Britain (England, Wales, and Scotland).
+England has nine regions, which Scotland and Wales are each considered a region, making 11 in total.
+We will use the `Easy Download` service to download the regions of England, Scotland, and Wales individually, and we will combine these in QGIS.
+Download the following files:
+
+```
+https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_gor_2011.zip
+https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/Scotland_ol_1991.zip
+https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/Wales_ol_2011.zip
+```
+
+I suggest you create a project folder to store these files in.
+I have called my `regions`.
+
+
+## Clipped and generalised polygons
+
+Some services offer clipped and/or generalised polygons.
+These typically are simplified and as such are a smaller file size than the unmodified files.
+However, from experience these often have 'slivers' or gaps between the polygons so the resulting polygons may not be valid which can be problematic for analysis.
+
+<!--TODO image of sliver -->
+
+I therefore strongly recommend downloading the unmodified shapefiles.
+Bandwidth and disk space are cheap; your time spent correcting topology errors is not!
+
+If you later decide you need to use the polygons for serving on a website for users to interact with, it makes sense to simplify the polygons at this stage, and there are tools that are 'topologically--aware' that do not create slivers.
+
 
 
 ## Projections and Coordinate Reference Systems
