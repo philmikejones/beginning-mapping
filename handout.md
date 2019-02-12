@@ -122,6 +122,16 @@ To plot a map we must first obtain some spatial data that describes the polygons
 There are a number of sources of spatial data.
 You can see the full list in the [References][] section.
 
+For these exercises we will download our boundary data from:
+
+```
+https://census.ukdataservice.ac.uk/get-data/boundary-data.aspx
+```
+
+This service offers a comprehensive range of high quality shapefiles covering a range of administrative geographies for all of the UK.
+
+
+
 ## Projections and Coordinate Reference Systems
 
 
@@ -148,7 +158,17 @@ You can see the full list in the [References][] section.
 https://gis.stackexchange.com/
 ```
 
+
+# Acknowledgements
+
+This document contains maps produced using boundary data used under the terms of the Open Government License.
+
+**Contains National Statistics data © Crown copyright and database right [2019]
+    Contains OS data © Crown copyright [and database right] (2019)**
+
+
 # References
+
 
 ## Spatial data
 
@@ -172,8 +192,6 @@ http://www.diva-gis.org/Data
 https://gadm.org/data.html
 https://www.naturalearthdata.com/downloads/
 ```
-
-
 
 ### Programming and interactive
 
