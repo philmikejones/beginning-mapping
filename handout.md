@@ -158,6 +158,10 @@ Bandwidth and disk space are cheap; your time spent correcting topology errors i
 
 If you later decide you need to use the polygons for serving on a website for users to interact with, it makes sense to simplify the polygons at this stage, and there are tools that are 'topologically--aware' that do not create slivers.
 
+If you need to perform a topologically--aware simplification, use `v.generalize` in the GRASS Toolbox (under `Processing` > `Toolbox`).
+See Figure \ref{qgis-grass-v-generalize} for where to find this tool.
+
+![v.generalize GRASS tool\label{qgis-grass-v-generalize}](images/qgis-grass-v-generalize.png)
 
 
 ## Projections and Coordinate Reference Systems
