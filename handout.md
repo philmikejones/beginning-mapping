@@ -61,11 +61,21 @@ You may already have Microsoft Excel installed on your computer.
 If you do not you can download LibreOffice and use the Calc programme.
 Either Excel or Calc will be more than adequate for our needs on the course.
 
-You can download QGIS from <https://qgis.org/en/site/forusers/download.html>.
+You can download QGIS from:
+
+```{.html}
+https://qgis.org/en/site/forusers/download.html
+```
+
 Be sure to download a version 3.x (currently version 3.4) of QGIS.
 Versions beginning 2.x (currently 2.18) are being discontinued, so it is worth starting with the current version.
 
-You can download LibreOffice from <https://www.libreoffice.org/download/download/>.
+You can download LibreOffice from:
+
+```{.html}
+https://www.libreoffice.org/download/download/
+```
+
 Either version is fine, but if you are in any doubt choose the lower version number, currently 6.1.5.
 
 Don't worry if you don't manage to install these; I can help you on the day if necessary.
@@ -78,11 +88,13 @@ Don't worry if you don't manage to install these; I can help you on the day if n
 To produce our maps we will use QGIS, a mature, open-source GIS used extensively in academia, public organisations, and private companies.
 QGIS is open source software and is free to download and use for any purpose.
 
+I **strongly** recommend you download verion 3.x (currently 3.4) of QGIS; not version 2.x as this is being deprecated.
+
 To open QGIS:
 
 - On Windows press the Windows key and start typing QGIS.
 - On Mac you can press Cmd + space, then start typing QGIS.
-- On Linux your desktop manager will have a run shortcut (on Ubuntu just the Super key).
+- On Linux your desktop manager will have a run shortcut (on Ubuntu it's the Super key).
 
 If you have a choice of versions choose QGIS Desktop.
 The default interface looks like Figure \ref{qgis-interface}.
@@ -92,6 +104,16 @@ The default interface looks like Figure \ref{qgis-interface}.
 
 ## Spreadsheet
 
+If you are using Microsoft Excel I will assume you are relatively familiar with it.
+However, we are only using the spreadsheet programme to store and retrieve data; we are not using any advanced functionality.
+The steps I demonstrate in LibreOffice Calc are therefore very similar to the steps in Microsoft Excel.
+
+LibreOffice is a free and open source suite of office applications similar in function to Microsoft Office.
+LibreOffice Calc is the spreadsheet programme.
+
+If you are using Calc it's interface looks like Figure \ref{calc-interface}.
+
+![The LibreOffice Calc interface\label{calc-interface}](images/calc-interface.png)
 
 # Obtaining spatial data
 
