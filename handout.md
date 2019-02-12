@@ -63,7 +63,7 @@ Either Excel or Calc will be more than adequate for our needs on the course.
 
 You can download QGIS from:
 
-```{.html}
+```
 https://qgis.org/en/site/forusers/download.html
 ```
 
@@ -72,7 +72,7 @@ Versions beginning 2.x (currently 2.18) are being discontinued, so it is worth s
 
 You can download LibreOffice from:
 
-```{.html}
+```
 https://www.libreoffice.org/download/download/
 ```
 
@@ -115,7 +115,12 @@ If you are using Calc it's interface looks like Figure \ref{calc-interface}.
 
 ![The LibreOffice Calc interface\label{calc-interface}](images/calc-interface.png)
 
+
 # Obtaining spatial data
+
+To plot a map we must first obtain some spatial data that describes the polygons and geometry of the map.
+There are a number of sources of spatial data.
+You can see the full list in the [References][] section.
 
 ## Projections and Coordinate Reference Systems
 
@@ -137,4 +142,42 @@ If you are using Calc it's interface looks like Figure \ref{calc-interface}.
 
 # Where to get help
 
+### GIS StackExchange
+
+```
+https://gis.stackexchange.com/
+```
+
 # References
+
+## Spatial data
+
+### UK
+
+```
+https://census.ukdataservice.ac.uk/get-data/boundary-data.aspx
+http://geoportal.statistics.gov.uk/
+https://www.ordnancesurvey.co.uk/business-and-government/products/finder.html?Licensed%20for=OpenData%20(Free)
+http://casweb.ukdataservice.ac.uk/
+```
+
+### World
+
+StatSilk (https://www.statsilk.com/maps/download-free-shapefile-maps) also maintain a list of up--to--date sources of shapefiles.
+
+```
+https://data.humdata.org/search?ext_geodata=1
+http://download.geofabrik.de/
+http://www.diva-gis.org/Data
+https://gadm.org/data.html
+https://www.naturalearthdata.com/downloads/
+```
+
+
+
+### Programming and interactive
+
+```
+https://developers.google.com/maps/documentation/
+https://wiki.openstreetmap.org/wiki/Overpass_API
+```
