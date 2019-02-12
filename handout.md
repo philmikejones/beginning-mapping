@@ -1,9 +1,17 @@
 ---
 title: Beginning mapping
 author: Dr. Phil Mike Jones
+date: "2019"
+top-level-division: chapter
+titlepage: true
+toc: true
+toc-own-page: true
+book: true
+logo: images/uk-orthographic-projection.png
+logo-width: 500
 ---
 
-![UK orthographic projection](images/uk_orthographic_projection.png)
+# Introduction
 
 Welcome to beginning mapping and spatial analysis for social researchers course.
 
