@@ -155,7 +155,7 @@ https://census.ukdataservice.ac.uk/get-data/boundary-data.aspx
 This service offers a comprehensive range of high quality shapefiles covering a range of administrative geographies for all of the UK.
 
 For our first map we will make a simple plot of regions in Great Britain (England, Wales, and Scotland).
-England has nine regions, which Scotland and Wales are each considered a region, making 11 in total.
+England has nine regions, while Scotland and Wales are each considered a region, making 11 in total.
 We will use the `Easy Download` service to download the regions of England, Scotland, and Wales individually, and we will combine these in QGIS.
 Download the following files:
 
