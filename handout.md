@@ -1,5 +1,5 @@
 ---
-title: Beginning mapping
+title: Beginning mapping and spatial analysis for social researchers
 author: Dr. Phil Mike Jones
 date: "2019"
 titlepage: true
@@ -13,6 +13,22 @@ logo-width: 500
 
 Welcome to beginning mapping and spatial analysis for social researchers course.
 This one--day course is being run on behalf of the Social Research Association.
+
+Maps are more than just navigational tools.
+Almost all aspects of our lives can be mapped and analysed.
+Maps of air pollution, cars per household, education, ethnicity, greenspace, religion, disease, life expectancy, even the number and location of take-away outlets can help us gain insight into the spatial nature of our world.
+
+Maps are used to depict variables and information (themes) of relevance to social researchers.
+These thematic maps are then used to understand the relationship between area and the theme of interest.
+
+Area is important because it affects multiple aspects of our lives.
+For example, baby boys born in the UK in 2012-2014 can expect to live to 79.5 years on average, but boys born in the richest part of the country can expect to live nearly a decade longer than boys born in the poorest part of the country (ONS, https://goo.gl/s4E8Pm).
+
+This course will equip you with the skills you need to produce your own thematic maps, and the knowledge you need to analyse and interpret them.
+The majority of the day will be practical.
+
+The course will be of relevance to academics, students, researchers, analysts, policy makers, commissioners, and managers who want to understand the spatial nature of social themes and issues.
+You might already have some data that you want to map, and just want to learn to do that, or you might want to complement your existing data and analyses with additional (spatial) evidence.
 
 <!--TODO contribution to CPD? -->
 
@@ -32,6 +48,14 @@ I enjoy teaching and have taught variations of much of this material to postgrad
 
 I hope you enjoy your course and come away with the skills and confidence to produce your own maps for spatial analysis; the world needs more geographers!
 
+### Bio
+
+Dr Phil Mike Jones is a geographer.
+He holds a PhD in human geography from the University of Sheffield. He specialises in spatial analysis and GIS, and has written software for spatial analysis and spatial simulation.
+He has extensive experience of social research, especially quantitative methods, in a variety of sectors.
+Phil has taught geography, GIS, and quantitative methods to undergraduates, postgraduates, academics, and practitioners, in a variety of settings.
+Phil uses open software and data in his teaching where possible to make these skills as accessible as possible.
+
 
 ## Course aims
 
@@ -44,7 +68,7 @@ By the end of this course you will be able to:
 - Spatially 'join' the data.
 - Understand which projection and coordinate reference systems (CRS) to use.
 - Produce a thematic map using appropriate software.
-- Export your thematic map.
+- Export your thematic map for reports and publications.
 - Analyse and interpret it and explain the relationships between areas and themes.
 
 
