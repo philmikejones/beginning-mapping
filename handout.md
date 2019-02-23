@@ -190,18 +190,19 @@ I have called my `regions`.
 
 ## Clipped and generalised polygons
 
-Some services offer clipped and/or generalised polygons.
+At this point it is worth making a small aside to discuss simplified polygons.
+For this example I have specified exactly which file to download, but when obtaining spatial data it is common for services to offer clipped and/or generalised polygons.
 These typically are simplified and as such are a smaller file size than the unmodified files.
 However, from experience these often have 'slivers' or gaps between the polygons so the resulting polygons may not be valid which can be problematic for analysis.
 
 <!--TODO image of sliver -->
 
-I therefore strongly recommend downloading the unmodified shapefiles.
+I therefore recommend downloading the original or unmodified shapefiles.
 Bandwidth and disk space are cheap; your time spent correcting topology errors is not!
+If you later decide you need to simplify the polygons, for example for serving on a website for users to interact with or simply to make plotting faster, it is quite straightforward to do this and you get more dependable results.
 
-If you later decide you need to use the polygons for serving on a website for users to interact with, it makes sense to simplify the polygons at this stage, and there are tools that are 'topologically--aware' that do not create slivers.
-
-If you need to perform a topologically--aware simplification, use `v.generalize` in the GRASS Toolbox (under `Processing` > `Toolbox`).
+There are many tools that are 'topologically--aware' that do not create slivers.
+In QGIS if you need to perform a topologically--aware simplification, use `v.generalize` in the GRASS Toolbox (under `Processing` > `Toolbox`).
 See Figure \ref{qgis-grass-v-generalize} for where to find this tool.
 
 ![v.generalize GRASS tool\label{qgis-grass-v-generalize}](images/qgis-grass-v-generalize.png)
