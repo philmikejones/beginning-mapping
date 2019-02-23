@@ -117,7 +117,8 @@ Don't worry if you don't manage to install these; I can help you on the day if n
 To produce our maps we will use QGIS, a mature, open-source GIS used extensively in academia, public organisations, and private companies.
 QGIS is open source software and is free to download and use for any purpose.
 
-I **strongly** recommend you download verion 3.x (currently 3.4) of QGIS; not version 2.x as this is being deprecated.
+I **strongly** recommend you download verion 3.x of QGIS; not version 2.x as this is being deprecated.
+I also recommend you use the current long--term release (LTR), which is currently 3.4.
 
 To open QGIS:
 
@@ -125,7 +126,7 @@ To open QGIS:
 - On Mac you can press Cmd + space, then start typing QGIS.
 - On Linux your desktop manager will have a run shortcut (on Ubuntu it's the Super key).
 
-If you have a choice of versions choose QGIS Desktop.
+If you have a choice of packages choose QGIS Desktop.
 The default interface looks like Figure \ref{qgis-interface}.
 
 ![The QGIS interface\label{qgis-interface}](images/qgis-interface.png)
