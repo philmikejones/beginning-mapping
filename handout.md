@@ -218,7 +218,7 @@ https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/Wales
 ```
 
 I suggest you create a project folder to store these files in.
-I have called my `regions`.
+I have called mine `regions`.
 
 
 ## Clipped and generalised polygons
@@ -240,9 +240,82 @@ See Figure \ref{qgis-grass-v-generalize} for where to find this tool.
 
 ![v.generalize GRASS tool\label{qgis-grass-v-generalize}](images/qgis-grass-v-generalize.png)
 
+If you need to install GRASS you can obtain this from:
+
+```
+https://grass.osgeo.org/download/
+```
+
+(If you're using Linux you can use your package manager to install `qgis-plugin-grass`, for example on an Ubuntu system run `sudo apt install qgis-plugin-grass`).
+
 
 ## Projections and Coordinate Reference Systems
 
+To produce a map you must specify (or use the default) coordinate reference system (CRS).
+A coordinate reference system specifies:
+
+- how coordinates are assigned to points on the Earth, and
+- the origin and scale of the coordinate system.
+
+A projection describes how the three--dimensional surface of the Earth is distorted to fit a two--dimensional map, either on the screen or in print.
+You can explore the size of the distortions of the Mercator projection using <https://thetruesize.com>.
+
+Fundamentally the CRS and projection specifies what the coordinates 'mean' so the they can be plotted correctly, and as a result the two terms are often used interchangeably.
+
+The CRS and projection are often specified in the same step and in practice you will typically download a spatial data file and specify the correct CRS for that data.
+Often the data you download will have a CRS/projection bundled with it and when you load the file the correct CRS will be applied.
+For example, the English regions zip file contained a `.prj` file which QGIS uses to apply the correct CRS to the file as it is loaded.
+You can open these `.prj` files with any text editor and the contents looks something like this:
+
+```
+PROJCS["OSGB_1936_British_National_Grid",GEOGCS["GCS_OSGB 1936",DATUM["D_OSGB_1936",SPHEROID["Airy_1830",6377563.396,299.3249646]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",49],PARAMETER["central_meridian",-2],PARAMETER["scale_factor",0.9996012717],PARAMETER["false_easting",400000],PARAMETER["false_northing",-100000],UNIT["Meter",1]]
+```
+
+This `.prj` specifies the British National Grid.
+It uses the OSGB 1936 coordinate system, the Airy 1830 spheroid (the Earth is not a perfect sphere), and the unit is metre (i.e. each unit increase in coordinate is equivalent to one metre).
+
+Don't worry too much about these; in practice most spatial data now specifies a CRS so this is automatic.
+You only need to know about these if:
+
+- the spatial data does not bundle a CRS and you need to specify it manually, or
+- you have data sets in different CRSs and you need to *transform* one or more data sets to be consistent.
+
+If you are using UK data from sources such as the OS the CRS is almost certainly the British National Grid (27700).
+
+The CRS is specified using a unique code called an EPSG code.
+A full list of all EPSG codes can be obtained from:
+
+```
+http://spatialreference.org/ref/epsg/
+```
+
+The EPSG codes for the two most common CRSs you will use (at least in the UK) are:
+
+- British National Grid `27700`
+- Mercator WGS84 (most common for web maps such as Google Maps) `4326`
+
+
+## Opening spatial data in QGIS
+
+From the QGIS window (Figure \ref{qgis-interface}) use the browser in the left sidebar to navigate to your project folder.
+In this folder select the file(s) that you want to open (you can hold Ctrl/Cmd and click to select multiple files) then press `Add selected layers`, or drag these into the `Layers` panel.
+
+Select the following files and add them as layers:
+
+- `england_gor_2011.shp`
+- `scotland_ol_1991.shp`
+- `wales_ol_2011.shp`
+
+Your map should look something like this:
+
+![Great Britain regions](images/gb-regions.png)
+
+Congratulations! You've just produced your first map!
+
+<!--
+TODO
+Editing shapefiles: select by attribute; clipping; manual
+-->
 
 # Obtain thematic data
 
@@ -307,4 +380,16 @@ https://www.naturalearthdata.com/downloads/
 ```
 https://developers.google.com/maps/documentation/
 https://wiki.openstreetmap.org/wiki/Overpass_API
+```
+
+### EPSG codes
+
+```
+http://spatialreference.org/ref/epsg/
+```
+
+### Projections
+
+```
+https://thetruesize.com
 ```
