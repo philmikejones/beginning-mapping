@@ -21,8 +21,10 @@ Maps of air pollution, cars per household, education, ethnicity, greenspace, rel
 Maps are used to depict variables and information (themes) of relevance to social researchers.
 These thematic maps are then used to understand the relationship between area and the theme of interest.
 
+![Map of mean house price by local authority July 2016. Greater height indicates greater mean price (£). This map was converted to 3D using the qgis2threejs plugin](images/house-price-stl.png)
+
 Area is important because it affects multiple aspects of our lives.
-For example, baby boys born in the UK in 2012-2014 can expect to live to 79.5 years on average, but boys born in the richest part of the country can expect to live nearly a decade longer than boys born in the poorest part of the country (ONS, https://goo.gl/s4E8Pm).
+For example, baby boys born in the UK in 2012-2014 can expect to live to 79.5 years on average, but boys born in the richest part of the country can expect to live nearly a decade longer than boys born in the poorest part of the country (ONS, <https://goo.gl/s4E8Pm>).
 
 This course will equip you with the skills you need to produce your own thematic maps, and the knowledge you need to analyse and interpret them.
 The majority of the day will be practical.
@@ -74,7 +76,7 @@ By the end of this course you will be able to:
 
 ## Before the course starts
 
-So that we can get started promptly on the day, before the course date it would help if you could download and install the software we will be using.
+So that we can get started promptly on the day, before the course date it would help if you could download and install the software and some of the data we will be using.
 
 You will need two pieces of software on the day.
 One is QGIS, which is the GIS software that we will use to produce our maps.
@@ -91,8 +93,9 @@ You can download QGIS from:
 https://qgis.org/en/site/forusers/download.html
 ```
 
-Be sure to download a version 3.x (currently version 3.4) of QGIS.
+Be sure to download a version 3.x of QGIS.
 Versions beginning 2.x (currently 2.18) are being discontinued, so it is worth starting with the current version.
+I strongly recommend you download the long--term release version (currently 3.4).
 
 You can download LibreOffice from:
 
@@ -103,6 +106,8 @@ https://www.libreoffice.org/download/download/
 Either version is fine, but if you are in any doubt choose the lower version number, currently 6.1.5.
 
 Don't worry if you don't manage to install these; I can help you on the day if necessary.
+
+<!--TODO Add link to data download zip-->
 
 
 # Software
