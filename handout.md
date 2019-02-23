@@ -131,6 +131,39 @@ The default interface looks like Figure \ref{qgis-interface}.
 
 ![The QGIS interface\label{qgis-interface}](images/qgis-interface.png)
 
+The default configuration options for QGIS are quite sensible and do not need much tweaking.
+I would suggest the following two changes.
+
+### Rendering with multiple cores
+
+QGIS should already have rendering with multiple cores enabled.
+The change I suggest is specifying the maximum number of cores to the number of cores available minus 1.
+This can prevent your system from temporarily locking up by always ensuring at least one core is available for tasks other than rendering.
+To do this open `Settings` > `Options` menu, and click the `Rendering` tab.
+
+![Rending options in QGIS](images/qgis-rendering-options.png)
+
+Tick `Max cores to use` and enter a number.
+If you do not know how many cores your computer has QGIS is pretty good at detecting this, so click up until you can no longer increase the number of cores, then simply drop one.
+If in doubt, most consumer computers have four, so specify three and press `Ok`.
+
+### Default CRS
+
+If most of your mapping will be of the UK (England, Scotland, Wales, and Northern Ireland) it may make sense to change the default coordinate reference system (CRS).
+Most sources of UK spatial data, such as Ordnance Survey or UK Data Service, use the British National Grid CRS (nothing to do with electricity) so it may be worth specifying this as the default.
+Don't worry too much what this is at this stage; I will explain this in a later section.
+
+Change the default CRS by opening the `Settings` > `Options` menu if it's not still open, and click the `CRS` tab.
+
+![QGIS CRS options](images/qgis-crs-options.png)
+
+By `Default CRS for new projects` click `Select CRS` (the little globe to the right).
+Then type `27700` (the code for British National Grid) and select it and press ok.
+
+![QGIS CRS Selector](images/qgis-crs-selector.png)
+
+You can always change the CRS for other projects if necessary.
+Of course, if most of your mapping will be for a country or region other than the UK a different default CRS might make more sense!
 
 ## Spreadsheet
 
