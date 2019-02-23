@@ -146,6 +146,18 @@ If you are using Calc it's interface looks like Figure \ref{calc-interface}.
 ![The LibreOffice Calc interface\label{calc-interface}](images/calc-interface.png)
 
 
+## Open source
+
+Both these packages (QGIS and LibreOffice) are free software.
+This means they are free to download and use for any purpose, and also that their source code is free to obtain.
+
+This does not mean that they are inferior to their licensed counterparts (and in some ways could be considered superior).
+They are both robust, professionally--written software.
+It just means that instead of charging the end user a license fee their development is paid for by individuals and organisations from all over the world through sponsorship and donations.
+
+Much of the backbone of the internet is underpinned by open source software contributed to by well--known companies like Google and Microsoft, so don't worry that 'free' means unsatisfactory.
+
+
 # Obtaining spatial data
 
 To plot a map we must first obtain some spatial data that describes the polygons and geometry of the map.
