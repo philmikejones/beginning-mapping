@@ -3,3 +3,6 @@ public/
 
 # compiled pdfs
 *.pdf
+
+# exercises
+regions/*
