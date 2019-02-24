@@ -310,7 +310,14 @@ Your map should look something like this:
 
 ![Great Britain regions](images/gb-regions.png)
 
-Congratulations! You've just produced your first map!
+Congratulations!
+You've just produced your first map!
+
+
+## Other spatial data types
+
+So far we have used file formats called shapefiles to plot our maps.
+These are probably the most common file format for
 
 <!--
 TODO
