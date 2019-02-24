@@ -317,7 +317,30 @@ You've just produced your first map!
 ## Other spatial data types
 
 So far we have used file formats called shapefiles to plot our maps.
-These are probably the most common file format for
+These are probably the most common file format for storing boundary data, but they are not the only file format.
+You might see other file formats including:
+
+- GeoJSON - JSON (Javascript Object Notation) is a common format for transmitting data across the web. GeoJSON simply extends this with geograhical boundary information.
+- KML is an XML--based file format originally developed for use with Google Earth.
+- GPX, commonly used for sharing GPS routes.
+
+XML (i.e. KML) is a more verbose file format than (Geo)JSON, so I recommend you download GeoJSON when given a choice.
+Open these in QGIS in exactly the same way as we opened the shapefile earlier, or simply drag and drop the layer in to QGIS from your file browser.
+
+In addition to file formats you may also see OGC data services and database formats listed, such as:
+
+- WMS
+- WCS
+- WFS
+- PostGIS
+
+Instead of downloading a file to your system locally, these formats work by connecting to the database from from within QGIS and using QGIS as a browser to obtain the boundary extent you require.
+Performing these steps is beyond the scope of this one--day course, but it is quite straightforward.
+If you wish to explore this the following link to the QGIS documentation will get you started (documentation for version 3.x of QGIS is still a work--in--progress so this page is written for version 2.18 of QGIS which is now out of date, but the steps are largely the same):
+
+```
+https://docs.qgis.org/2.18/en/docs/user_manual/working_with_ogc/ogc_client_support.html
+```
 
 <!--
 TODO
