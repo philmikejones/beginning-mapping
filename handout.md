@@ -342,6 +342,27 @@ If you wish to explore this the following link to the QGIS documentation will ge
 https://docs.qgis.org/2.18/en/docs/user_manual/working_with_ogc/ogc_client_support.html
 ```
 
+
+## Modifying boundary files
+
+For our first map we plotted all of the regions of Great Britain.
+Sometimes we may want to plot a smaller area of the country.
+For example, you may wish to plot just one region or local authority.
+
+It is sometimes possible to download just the boundaries we need.
+For example the Boundary Data Selector
+
+```
+https://borders.ukdataservice.ac.uk/bds.html
+```
+
+allows us to select certain sub regions, but does not always give us enough control over which areas to select.
+It is therefore often necessary to trim or modify larger boundary files.
+
+
+
+
+
 <!--
 TODO
 Editing shapefiles: select by attribute; clipping; manual
