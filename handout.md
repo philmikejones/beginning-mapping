@@ -385,6 +385,15 @@ Editing shapefiles: select by attribute; clipping; manual
 
 # Where to get help
 
+### QGIS Uncovered
+
+Steven Bernard has produced a series of excellent tutorial videos for QGIS.
+They were recorded with QGIS 2 but many of the steps and procedures are the same or very similar with QGIS 3, so this is still a very useful resource:
+
+```
+https://www.youtube.com/playlist?list=PL7HotvlLKHCs9nD1fFUjSOsZrsnctyV2R
+```
+
 ### GIS StackExchange
 
 ```
