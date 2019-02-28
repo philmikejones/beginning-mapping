@@ -203,11 +203,15 @@ For these exercises we will download our boundary data from:
 https://census.ukdataservice.ac.uk/get-data/boundary-data.aspx
 ```
 
+<!-- TODO Screenshot of boundary website -->
+
 This service offers a comprehensive range of high quality shapefiles covering a range of administrative geographies for all of the UK.
 
 For our first map we will make a simple plot of regions in Great Britain (England, Wales, and Scotland).
 England has nine regions, while Scotland and Wales are each considered a region, making 11 in total.
 We will use the `Easy Download` service to download the regions of England, Scotland, and Wales individually, and we will combine these in QGIS.
+
+<!-- TODO Why am I not using Northern Ireland? I think it uses a different projection system -->
 
 Download and unzip the following files if you have not already downloaded the data archive:
 
@@ -248,6 +252,8 @@ https://grass.osgeo.org/download/
 
 (If you're using Linux you can use your package manager to install `qgis-plugin-grass`, for example on an Ubuntu system run `sudo apt install qgis-plugin-grass`).
 
+<!-- TODO Compare results of v.generalize and standard generalise -->
+
 
 ## Projections and Coordinate Reference Systems
 
@@ -258,7 +264,11 @@ A coordinate reference system specifies:
 - the origin and scale of the coordinate system.
 
 A projection describes how the three--dimensional surface of the Earth is distorted to fit a two--dimensional map, either on the screen or in print.
-You can explore the size of the distortions of the Mercator projection using <https://thetruesize.com>.
+You can explore the size of the distortions of the Mercator projection using
+
+```
+https://thetruesize.com
+```
 
 Fundamentally the CRS and projection specifies what the coordinates 'mean' so the they can be plotted correctly, and as a result the two terms are often used interchangeably.
 
@@ -312,7 +322,7 @@ Your map should look something like this:
 
 Congratulations!
 You've just produced your first map!
-
+Notice in the bottom right corner the Current CRS is set to `EPSG:27700`, the British National Grid.
 
 ## Other spatial data types
 
