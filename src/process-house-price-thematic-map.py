@@ -22,9 +22,8 @@ except TypeError():
     "Problem unzipping local authorities"
 
 house_prices = pd.read_csv("data/external/Average-prices-2016-07.csv")
-house_prices = house_prices[house_prices.Date == "2016-07"]
-
 
 # lad = gpd.read_file("data/external/infuse_dist_lyr_2011.shp")
 
-print(house_prices.head())
+house_prices = house_prices[house_prices.Date == "2016-07-01"]
+house_prices
