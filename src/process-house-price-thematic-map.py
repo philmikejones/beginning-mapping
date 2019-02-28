@@ -11,3 +11,11 @@ if not os.path.isfile("data/external/Average-prices-2016-07.csv"):
     file = pd.read_csv(file)
     file.to_csv("data/external/Average-prices-2016-07.csv")
     print("Saved Average-prices-2016-07.csv")
+
+try:
+    shutil.unpack_archive(
+        "data/external/infuse_dist_lyr_2011.zip",
+        "data/external"
+    )
+except TypeError():
+    "Problem unzipping local authorities"
