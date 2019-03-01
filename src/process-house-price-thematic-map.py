@@ -10,13 +10,13 @@ import geopandas
 os.makedirs("data/external", exist_ok=True)
 
 if not os.path.isfile("data/external/Average-prices-2016-07.csv"):
-    file = "http://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/Average-prices-2016-07.csv"
+    file = "http://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/Average-prices-2016-07.csv"  # pylint: disable=line-too-long
     file = pd.read_csv(file)
     file.to_csv("data/external/Average-prices-2016-07.csv")
 
 if not os.path.isfile("data/external/infuse_dist_lyr_2011.zip"):
     with open("data/external/infuse_dist_lyr_2011.zip", "wb") as file:
-        url = "https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/infuse_dist_lyr_2011.zip"
+        url = "https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/infuse_dist_lyr_2011.zip"  # pylint: disable=line-too-long
         data = requests.get(url)
         data = data.content
         file.write(data)
