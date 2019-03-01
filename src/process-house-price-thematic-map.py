@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 import os
+import shutil
+import requests
 import pandas as pd
-import geopandas as gpd
+import geopandas
 
 os.makedirs("data/external", exist_ok=True)
 
@@ -10,7 +12,12 @@ if not os.path.isfile("data/external/Average-prices-2016-07.csv"):
     file = "http://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/Average-prices-2016-07.csv"
     file = pd.read_csv(file)
     file.to_csv("data/external/Average-prices-2016-07.csv")
-    print("Saved Average-prices-2016-07.csv")
+
+with open("data/external/infuse_dist_lyr_2011.zip", "wb") as file:
+    url = "https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/infuse_dist_lyr_2011.zip"
+    data = requests.get(url)
+    data = data.content
+    file.write(data)
 
 try:
     shutil.unpack_archive(
