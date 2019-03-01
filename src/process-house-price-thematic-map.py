@@ -48,8 +48,12 @@ house_prices.Region_Name = house_prices.Region_Name.str.replace(
     case=True, regex=False)
 house_prices.Region_Name = house_prices.Region_Name.str.replace(
     "^City of ", "", regex=True)
-house_prices[house_prices.Region_Name == "Na h-Eileanan Siar"] = "Eilean Siar"
-house_prices[house_prices.Region_Name == "City of Nottingham"] = "Nottingham"
+house_prices.loc[
+    house_prices.Region_Name == "Na h-Eileanan Siar", "Region_Name"
+] = "Eilean Siar"
+house_prices.loc[
+    house_prices.Region_Name == "City of Nottingham", "Region_Name"
+] = "Nottingham"
 
 lad = geopandas.read_file("data/external/infuse_dist_lyr_2011.shp")
 lad = lad[~lad.label.str.contains("^N")]
@@ -68,4 +72,4 @@ lad[lad.geo_label == "The Vale of Glamorgan"] = "Vale of Glamorgan"
 lad = lad.set_index("geo_label")
 house_prices = house_prices.set_index("Region_Name")
 
-lad.join(house_prices)
+lad = lad.join(house_prices)
