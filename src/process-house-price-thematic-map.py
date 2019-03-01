@@ -3,6 +3,7 @@
 import os
 import shutil
 import requests
+import statistics
 import pandas as pd
 import geopandas
 
