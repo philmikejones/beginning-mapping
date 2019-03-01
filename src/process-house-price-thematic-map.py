@@ -51,8 +51,8 @@ house_prices.Region_Name = house_prices.Region_Name.str.replace(
 house_prices[house_prices.Region_Name == "Na h-Eileanan Siar"] = "Eilean Siar"
 house_prices[house_prices.Region_Name == "City of Nottingham"] = "Nottingham"
 
-
 lad = geopandas.read_file("data/external/infuse_dist_lyr_2011.shp")
+lad = lad[~lad.label.str.contains("^N")]
 
 lad.geo_label = lad.geo_label.str.replace(
     ", County of", "", case=True, regex=False)
@@ -68,7 +68,4 @@ lad[lad.geo_label == "The Vale of Glamorgan"] = "Vale of Glamorgan"
 lad = lad.set_index("geo_label")
 house_prices = house_prices.set_index("Region_Name")
 
-raise ValueError("Label being inserted into Average_Price")
-
-lad = lad.join(house_prices)
-lad.head()
+lad.join(house_prices)
