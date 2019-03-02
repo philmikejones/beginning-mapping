@@ -22,8 +22,9 @@ if not os.path.isfile("data/external/infuse_dist_lyr_2011.zip"):
         data = data.content
         file.write(data)
 
-shutil.unpack_archive(
-    "data/external/infuse_dist_lyr_2011.zip", "data/external")
+if not os.path.isfile("data/external/infuse_dist_lyr_2011.shp"):
+    shutil.unpack_archive(
+        "data/external/infuse_dist_lyr_2011.zip", "data/external")
 
 house_prices = pd.read_csv("data/external/Average-prices-2016-07.csv")
 house_prices = house_prices[house_prices.Date == "2016-07-01"]
