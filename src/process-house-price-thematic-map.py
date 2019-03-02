@@ -8,6 +8,7 @@ import pandas as pd
 import geopandas
 
 os.makedirs("data/external", exist_ok=True)
+os.makedirs("data/processed", exist_ok=True)
 
 if not os.path.isfile("data/external/Average-prices-2016-07.csv"):
     file = "http://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/Average-prices-2016-07.csv"  # pylint: disable=line-too-long
@@ -30,7 +31,6 @@ house_prices = house_prices[["Region_Name", "Average_Price"]]
 
 # No geo code in house_prices so need to join on Region_Name
 # This, of course, means we need to match them!
-
 # Using the .loc[row.index, col.index] prevents a copy warning
 (house_prices.loc[
     house_prices["Region_Name"] == "City of London", "Average_Price"
@@ -72,4 +72,5 @@ lad[lad.geo_label == "The Vale of Glamorgan"] = "Vale of Glamorgan"
 lad = lad.set_index("geo_label")
 house_prices = house_prices.set_index("Region_Name")
 
-lad = lad.join(house_prices)
+house_prices = lad.join(lad)
+house_prices.to_file("data/processed/house_prices.GeoJSON")
