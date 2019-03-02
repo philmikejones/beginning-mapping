@@ -71,6 +71,7 @@ lad[lad.geo_label == "The Vale of Glamorgan"] = "Vale of Glamorgan"
 
 lad = lad.set_index("geo_label")
 house_prices = house_prices.set_index("Region_Name")
+house_prices = lad.join(house_prices)
 
-house_prices = lad.join(lad)
-house_prices.to_file("data/processed/house_prices.GeoJSON")
+house_prices.to_file("data/processed/house_prices.GeoJSON",
+                     driver="GeoJSON")
