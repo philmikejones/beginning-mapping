@@ -73,4 +73,4 @@ lad = lad.set_index("geo_label")
 house_prices = lad.join(house_prices)
 house_prices = house_prices.set_geometry("geometry")
 
-house_prices.to_file("data/processed/house_prices.shp", driver="GeoJSON")
+house_prices.to_file("data/processed/house_prices.shp", driver="ESRI Shapefile")
