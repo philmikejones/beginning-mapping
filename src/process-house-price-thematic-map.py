@@ -3,7 +3,6 @@
 import os
 import shutil
 import requests
-import statistics
 import pandas as pd
 import geopandas
 
@@ -31,30 +30,22 @@ house_prices = house_prices[house_prices.Date == "2016-07-01"]
 house_prices = house_prices[["Region_Name", "Average_Price"]]
 
 # No geo code in house_prices so need to join on Region_Name
-# This, of course, means we need to match them!
-# Using the .loc[row.index, col.index] prevents a copy warning
-(house_prices.loc[
-    house_prices["Region_Name"] == "City of London", "Average_Price"
-]) = statistics.mean([
-    float(house_prices.Average_Price[
-        house_prices.Region_Name == "City of London"]),
-    float(house_prices.Average_Price[
-        house_prices.Region_Name == "City of Westminster"])
-])
-house_prices = house_prices[house_prices.Region_Name != "City of Westminster"]
-house_prices.Region_Name = house_prices.Region_Name.str.replace(
-    "City of London", "City of London, Westminster")
+house_prices.loc[
+    house_prices.Region_Name == "City of Westminster", "Region_Name"
+] = "City of London, Westminster"
+house_prices.loc[
+    house_prices.Region_Name == "City of London", "Region_Name"
+] = "City of London, Westminster"
 house_prices.Region_Name = house_prices.Region_Name.str.replace(
     " And ", " and ",
-    case=True, regex=False)
+    case=True, regex=False
+)
 house_prices.Region_Name = house_prices.Region_Name.str.replace(
-    "^City of ", "", regex=True)
+    "^City of ", "", regex=True
+)
 house_prices.loc[
     house_prices.Region_Name == "Na h-Eileanan Siar", "Region_Name"
 ] = "Eilean Siar"
-house_prices.loc[
-    house_prices.Region_Name == "City of Nottingham", "Region_Name"
-] = "Nottingham"
 
 lad = geopandas.read_file("data/external/infuse_dist_lyr_2011.shp")
 lad = lad[~lad.label.str.contains("^N")]
