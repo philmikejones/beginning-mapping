@@ -37,10 +37,8 @@ house_prices.loc[
 house_prices.loc[
     house_prices.Region_Name == "City of London", "Region_Name"
 ] = "City of London,Westminster"
-
 house_prices.Region_Name = house_prices.Region_Name.str.replace(
-    " And ", " and ",
-    case=True, regex=False
+    " And ", " and ", case=True, regex=False
 )
 house_prices.Region_Name = house_prices.Region_Name.str.replace(
     "^City of ", "", regex=True
@@ -49,6 +47,8 @@ house_prices.loc[
     house_prices.Region_Name == "Na h-Eileanan Siar", "Region_Name"
 ] = "Eilean Siar"
 
+house_prices = house_prices.groupby("Region_Name")["Average_Price"].mean()
+house_prices = pd.DataFrame(house_prices)
 
 
 lad = geopandas.read_file("data/external/infuse_dist_lyr_2011.shp")
@@ -68,10 +68,9 @@ lad.geo_label = lad.geo_label.str.replace(
 )
 lad.geo_label[lad.geo_label == "Cornwall,Isles of Scilly"] = "Cornwall"
 lad.geo_label[lad.geo_label == "The Vale of Glamorgan"] = "Vale of Glamorgan"
-
 lad = lad.set_index("geo_label")
-house_prices = house_prices.set_index("Region_Name")
-house_prices = lad.join(house_prices)
 
-house_prices.to_file("data/processed/house_prices.GeoJSON",
-                     driver="GeoJSON")
+house_prices = lad.join(house_prices)
+house_prices = house_prices.set_geometry("geometry")
+
+house_prices.to_file("data/processed/house_prices.GeoJSON", driver="GeoJSON")
