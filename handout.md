@@ -252,8 +252,6 @@ https://grass.osgeo.org/download/
 
 (If you're using Linux you can use your package manager to install `qgis-plugin-grass`, for example on an Ubuntu system run `sudo apt install qgis-plugin-grass`).
 
-<!-- TODO Compare results of v.generalize and standard generalise -->
-
 
 ## Projections and Coordinate Reference Systems
 
@@ -369,9 +367,34 @@ https://borders.ukdataservice.ac.uk/bds.html
 allows us to select certain sub regions, but does not always give us enough control over which areas to select.
 It is therefore often necessary to trim or modify larger boundary files.
 
+For this next exercise we'll select just the Greater London region (I've chosen Greater London because I thought this would be the area people are most likely to be familiar with).
+Untick Scotland (`scotland_ol_1991`) and Wales (`wales_ol_2011`), leaving just England (`england_gor_2011`).
 
+To select just London right--click on `england_gor_2011` in the Layers pane and press 'Filter'.
+You should see the 'Query Builder' dialogue box:
 
+![Query Builder dialogue box](images/query-builder.png)
 
+Here we will select which area(s) to retain and show.
+We can filter on any attribute in the file's attribute table, such as code or name, but here we will use name.
+
+Double--click `name` to see it copied into the 'Provider specific filter expression' at the bottom.
+Now press or type `=`.
+Finally under 'Values' on the right press 'All' to list all unique region names.
+Double--click 'London' so the final filter expression should look like:
+
+```python
+"name" = 'London'
+```
+
+Press 'Test' and a dialogue box should inform you that 1 row was selected.
+Press OK and just the London region should remain plotted.
+
+![Zoom Full](images/zoom-full.png)
+
+You can resize the plot on London with the 'Zoom Full' icon (or use the keyboard shortcut `CTRL` + `SHIFT` + `F`, or `Cmd` + `SHIFT` + `F` on Mac).
+
+![London - selected with Query Builder](images/london-query-builder.png)
 
 <!--
 TODO
