@@ -232,11 +232,11 @@ For this example I have specified exactly which file to download, but when obtai
 These typically are simplified and as such are a smaller file size than the unmodified files.
 However, from experience these often have 'slivers' or gaps between the polygons so the resulting polygons may not be valid which can be problematic for analysis.
 
-<!--TODO image of sliver -->
-
 I therefore recommend downloading the original or unmodified shapefiles.
 Bandwidth and disk space are cheap; your time spent correcting topology errors is not!
 If you later decide you need to simplify the polygons, for example for serving on a website for users to interact with or simply to make plotting faster, it is quite straightforward to do this and you get more dependable results.
+
+![Simplified geometries with slivers (left) and without slivers (right). The slivers make a gap allowing the background layer (black) to show through.](images/sliver-comparison.png)
 
 There are many tools that are 'topologically--aware' that do not create slivers.
 In QGIS if you need to perform a topologically--aware simplification, use `v.generalize` in the GRASS Toolbox (under `Processing` > `Toolbox`).
