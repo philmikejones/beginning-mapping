@@ -32,7 +32,7 @@ The majority of the day will be practical.
 The course will be of relevance to academics, students, researchers, analysts, policy makers, commissioners, and managers who want to understand the spatial nature of social themes and issues.
 You might already have some data that you want to map, and just want to learn to do that, or you might want to complement your existing data and analyses with additional (spatial) evidence.
 
-<!--TODO contribution to CPD? -->
+This course contributes 6 hours to the MRS CPD programme.
 
 
 ## About your instructor
