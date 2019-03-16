@@ -384,6 +384,62 @@ It is therefore often necessary to trim or modify larger boundary files.
 For this next exercise we'll select just the Greater London region (I've chosen Greater London because I thought this would be the area people are most likely to be familiar with).
 Untick Scotland (`scotland_ol_1991`) and Wales (`wales_ol_2011`), leaving just England (`england_gor_2011`).
 
+
+### Create a backup copy
+
+Before modifying your shapefiles in any way it is a good idea to create a backup copy first.
+I recommend you get into the habit of making a backup copy before making any *destructive changes* to your input files in case you can't recover the original.
+
+With the shapefile specification there are a number of files associated with the geometry that we need to copy, from a minimum of three to potentially more than ten (see https://en.wikipedia.org/wiki/Shapefile).
+I therefore recommend saving a new copy with QGIS, which manages all the associated files automatically.
+To do this simply right--click on the layer you want to copy, then select `Export` then `Save Features As`.
+
+![Export layer](images/export-layer.png)
+
+The dialogue box will give you a range of options but there are only a few we need to change:
+
+- Under Format select `ESRI Shapefile` for now.
+- Under File Name we need to specify a file name. I suggest naming our new file the same as the original, but append `_edit` to the end to remind us which layer we are editing.
+- Leave the rest of the options unchanged and press `OK`.
+
+![Save vector layer dialogue](images/save-vector-layer-dialogue.png)
+
+You should now have two `england_gor_2011` layers, one called `england_gor_2011_edit`.
+Untick the original so we do not accidentally modify this, and we can now make changes to the copy.
+Save your project (`CTRL`/`Cmd` + `S`).
+
+![Duplicated england_gor_2011 layer](images/duplicated-layer.png)
+
+
+## Selecting with GUI
+
+![Select Feature(s) tool](images/select-features.png)
+
+The easiest way to select individual or groups of polygons is using the GUI (graphical user interface).
+Use the 'Select Feature(s)' tool (the icon is along the top).
+
+![Open Attribute Table](images/open-attribute-table-icon.png)
+
+To select just London, click inside the London region and it should be highlighted in a particularly sharp shade of yellow.
+To delete the other regions we are now going to open the attribute table (or use the keyboard shortcut `F6`):
+
+![Enable editing mode](images/toggle-editing-mode.png)
+
+1. Now Invert Selection (keyboard shortcut `CTRL`/`Cmd` + `R`)
+1. To be able to delete (and therefore remove) these features we now need to enable editing mode (keyboard shortcut `CTRL`/`Cmd` + `E`)
+1. Delete selected features (the red trashcan; there's no keyboard shortcut).
+1. Save edits (`CTRL`/`Cmd` + `S`) and (optionally) toggle editing mode back off.
+1. When you close the attribute table you should be left with just London.
+1. Adjust the scale with 'Zoom Full' (`CTRL`/`Cmd` + `SHIFT` + `F`).
+
+![Delete selected features](images/delete-selected-features.png)
+
+Congratulations!
+You've just edited your first shapefile!
+
+
+## Modify with expression
+
 To select just London right--click on `england_gor_2011` in the Layers pane and press 'Filter'.
 You should see the 'Query Builder' dialogue box:
 
