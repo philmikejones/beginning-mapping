@@ -322,6 +322,20 @@ Congratulations!
 You've just produced your first map!
 Notice in the bottom right corner the Current CRS is set to `EPSG:27700`, the British National Grid.
 
+
+## Save your project
+
+At this point we will save our project.
+I recommend saving your project regularly, especially before making any changes to styling or formatting of your plot.
+To save press the 'Save Project' icon, or use the keyboard shortcut `CTRL` + `S` (or `Cmd` + `S` on Mac).
+
+![Save project](images/save-project.png)
+
+I've saved my project as 'regions' in the `regions/` directory along with my shapefiles.
+
+![Save project dialogue](images/save-project-dialogue.png)
+
+
 ## Other spatial data types
 
 So far we have used file formats called shapefiles to plot our maps.
