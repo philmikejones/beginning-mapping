@@ -6,16 +6,16 @@ import shutil
 
 os.makedirs("regions", exist_ok=True)
 
-if not os.path.isfile("regions/infuse_rgn_2011.zip"):
-    with open("regions/infuse_rgn_2011.zip", "wb") as file:
-        url = "https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/infuse_rgn_2011.zip"
+if not os.path.isfile("regions/England_gor_2011.zip"):
+    with open("regions/England_gor_2011.zip", "wb") as file:
+        url = "https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_gor_2011.zip"
         data = requests.get(url)
         data = data.content
         file.write(data)
 
-if not os.path.isfile("regions/infuse_rgn_2011.shp"):
+if not os.path.isfile("regions/England_gor_2011.shp"):
     shutil.unpack_archive(
-        "regions/infuse_rgn_2011.zip", "regions"
+        "regions/England_gor_2011.zip", "regions"
     )
 
 if not os.path.isfile("regions/Scotland_ol_2001.zip"):
