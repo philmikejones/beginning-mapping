@@ -444,12 +444,20 @@ Selecting areas or regions with a GUI is sometimes straightforward and the easie
 This approach is particularly useful if you want to select one or more regions that are adjacent to each other, or you only have a small number of regions you want to select.
 
 When we want to select multiple regions, especially if they are not adjacent, this can be error--prone (and not to mention tedious!) if we use GUI tools to do this.
-Enter 'Select by expression' which allows us to select regions by attributes, such as name or code.
+Instead for this exercise we will use 'Select by expression' which allows us to select regions by attributes, such as name or code.
 
-As before we are going to remove a number of regions, but this time we are going to select two regions to gain experience using the expression syntax (it's `Python` if you have any experience with this).
+As before we are going to remove a number of regions, but this time we are going to select two regions to gain experience using the expression syntax.
+The expression syntax is based on `Python` and is very similar to the syntax used in SPSS to select or filter cases, so you may have already used it.
 
-To select just London right--click on `england_gor_2011` in the Layers pane and press 'Filter'.
-You should see the 'Query Builder' dialogue box:
+Before we begin we need to remove any existing edited files (`england_gor_2011_edit`) and make a new copy of the original file.
+Click on `england_gor_2011_edit` and press 'Remove Layer/Group' (or use the keyboard shortcut `CTRL`/`Cmd` + `D`) then press OK.
+Now make a copy of `england_gor_2011` as before (Export > Save Features As > Format: ESRI Shapefile; File name: `england_gor_2011_edit`).
+Finally untick the original layer in the Layers panel to ensure we do not edit this by mistake.
+You should be left with a copy of the `england_gor_2011` layer selected with all the regions restored.
+
+For this exercise I am going to select London and East of England, although you are welcome to practise with any two regions you prefer.
+Right--click on the layer you wish to edit (`england_gor_2011_edit`) and press Filter.
+You should be presented with the Query Builder dialogue box.
 
 ![Query Builder dialogue box](images/query-builder.png)
 
@@ -459,20 +467,47 @@ We can filter on any attribute in the file's attribute table, such as code or na
 Double--click `name` to see it copied into the 'Provider specific filter expression' at the bottom.
 Now press or type `=`.
 Finally under 'Values' on the right press 'All' to list all unique region names.
-Double--click 'London' so the final filter expression should look like:
+Double--click 'London' so your filter expression should look like the following:
 
 ```python
 "name" = 'London'
 ```
 
-Press 'Test' and a dialogue box should inform you that 1 row was selected.
-Press OK and just the London region should remain plotted.
+Now type or press `OR` (capitals are important), type or double--click `"name" = ` then finally double--click or type `East of England`.
+Your final expression should look like:
+
+```python
+"name" = 'London' OR "name" = 'East of England'
+```
+
+Notice `name` (the field) is enclosed in double--quotes (`"name"`) and `London` and `East of England` (the values) are enclosed in single--quotes.
+These distinctions are important.
+Don't worry if you can't remember which way around they go; double--clicking fields or values will always add them to the expression with the correct syntax.
 
 ![Zoom Full](images/zoom-full.png)
 
+Press 'Test' and a dialogue box should inform you that 2 rows are selected.
+Press OK to show just London and East of England.
 You can resize the plot on London with the 'Zoom Full' icon (or use the keyboard shortcut `CTRL` + `SHIFT` + `F`, or `Cmd` + `SHIFT` + `F` on Mac).
+You should see the following:
 
-![London - selected with Query Builder](images/london-query-builder.png)
+![London and East of England selected with Query Builder](images/london-query-builder.png)
+
+There are similar alternatives to the Query Builder:
+
+- Select Feature by Value (`F3`)
+- Select Feature by Expression (`CTRL`/`Cmd` + `F3`)
+
+I prefer and recommend the query builder because:
+
+- You cannot list available values with Select Feature by Value,
+so you need to know in advance what your values are. For example, is it `East of England`, or `east-of-england`, or `eastOfEngland`?
+- The Select Feature by Expression first selects the area(s) according to your criteria, and then you still need to remove the selection (or inverted selection) of areas; filtering does this in one step.
+
+Sometimes you do of course want to just select areas and these tools are more appropriate, but Filter > Query Builder is often the quickest way to remove areas.
+
+Congratulations!
+This is your first programmatic modification of a shapefile!
 
 <!--
 TODO
