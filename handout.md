@@ -440,6 +440,14 @@ You've just edited your first shapefile!
 
 ## Modify with expression
 
+Selecting areas or regions with a GUI is sometimes straightforward and the easiest approach to take.
+This approach is particularly useful if you want to select one or more regions that are adjacent to each other, or you only have a small number of regions you want to select.
+
+When we want to select multiple regions, especially if they are not adjacent, this can be error--prone (and not to mention tedious!) if we use GUI tools to do this.
+Enter 'Select by expression' which allows us to select regions by attributes, such as name or code.
+
+As before we are going to remove a number of regions, but this time we are going to select two regions to gain experience using the expression syntax (it's `Python` if you have any experience with this).
+
 To select just London right--click on `england_gor_2011` in the Layers pane and press 'Filter'.
 You should see the 'Query Builder' dialogue box:
 
