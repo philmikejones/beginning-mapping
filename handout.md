@@ -511,7 +511,7 @@ This is your first programmatic modification of a shapefile!
 
 <!--
 TODO
-Editing shapefiles: select by attribute; clipping; manual
+Editing shapefiles: clipping; manual
 -->
 
 # Obtain thematic data
