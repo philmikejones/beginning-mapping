@@ -525,6 +525,13 @@ If you do not already have the local authority districts (LADs) file from the zi
 https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_lad_2011.zip
 ```
 
+I suggest making a new project.
+Start by creating a new directory (I've called mine `lad`) and open QGIS.
+Add `england_gor_2011` from the previous project (`regions`) and save a duplicate as we did in the 'Create a backup copy' section, making sure to save it into the new project ('lad').
+Load `england_gor_2011_edit` (or whatever you called your copy) and `England_lad_2011` into your layers panel, and you should have something that looks like this:
+
+![Regions and LAD layers ready for clipping](images/clip-exercise-layers.png)
+
 <!--
 TODO
 Editing shapefiles: clipping; manual
