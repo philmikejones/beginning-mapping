@@ -509,6 +509,22 @@ Sometimes you do of course want to just select areas and these tools are more ap
 Congratulations!
 This is your first programmatic modification of a shapefile!
 
+
+## Modify with clip
+
+The last approach we'll use is called a spatial clip.
+This uses a larger polygon to specify the extent of the smaller polygons we want to keep.
+For example, we might want to keep (clip) all the boroughs in the Greater London region.
+We will achieve this by downloading the local authority districts (LADs) in Great Britain; these include the London Boroughs.
+Next we will select just the Greater London region using the 'Select by Expression' approach above.
+We will then clip the LADs layer to the Greater London region.
+
+If you do not already have the local authority districts (LADs) file from the zip file download it from the following URL:
+
+```
+https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_lad_2011.zip
+```
+
 <!--
 TODO
 Editing shapefiles: clipping; manual
