@@ -13,6 +13,7 @@ logo-width: 500
 
 Welcome to beginning mapping and spatial analysis for social researchers course.
 This one--day course is being run on behalf of the Social Research Association.
+This course contributes 6 hours to the MRS CPD programme.
 
 Maps are more than just navigational tools.
 Almost all aspects of our lives can be mapped and analysed.
@@ -28,11 +29,7 @@ For example, baby boys born in the UK in 2012-2014 can expect to live to 79.5 ye
 
 This course will equip you with the skills you need to produce your own thematic maps, and the knowledge you need to analyse and interpret them.
 The majority of the day will be practical.
-
-The course will be of relevance to academics, students, researchers, analysts, policy makers, commissioners, and managers who want to understand the spatial nature of social themes and issues.
-You might already have some data that you want to map, and just want to learn to do that, or you might want to complement your existing data and analyses with additional (spatial) evidence.
-
-This course contributes 6 hours to the MRS CPD programme.
+At the end of the day there will be time to try mapping your own data, if you wish.
 
 
 ## About your instructor
@@ -64,9 +61,7 @@ Phil uses open software and data in his teaching where possible to make these sk
 By the end of this course you will be able to:
 
 - Obtain spatial data (e.g. shapefiles, GeoJSON).
-- Obtain suitable thematic data, including:
-  - points (e.g. business locations)
-  - aggregate (e.g. population data)
+- Obtain suitable thematic data, such as points (e.g. business locations) and aggregate data (e.g. population data).
 - Spatially 'join' the data.
 - Understand which projection and coordinate reference systems (CRS) to use.
 - Produce a thematic map using appropriate software.
