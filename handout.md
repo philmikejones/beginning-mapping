@@ -281,7 +281,7 @@ Don't worry too much about these; in practice most spatial data now specifies a 
 You only need to know about these if:
 
 - the spatial data does not bundle a CRS and you need to specify it manually, or
-- you have data sets in different CRSs and you need to *transform* one or more data sets to be consistent.
+- you have data sets in different CRSs and you need to *transform* or **reproject** one or more data sets to be consistent (I describe how to do this below).
 
 If you are using UK data from sources such as the OS the CRS is almost certainly the British National Grid (27700).
 
@@ -559,7 +559,53 @@ It is often the case that if you are using different layers from the same source
 In the wild, especially if using layers from different sources, it is necessary to use the GUI or filter by expression tools (or a combination of both) to select the layers you need.
 
 
+## Converting between projections/CRS
+
+So far we have used layers with the same CRS (we discussed CRS in an earlier section).
+If you have multiple layers from different data sources it is common that one or more layers will be in a different CRS to the others, and you must convert these to a common CRS.
+
+One strategy is to transform one of the layers, permanently changing the coordinate system of the layer(s).
+The other strategy is to reproject the layer(s) on--the--fly so the reprojection is temporary.
+I find transforming is useful if I know I need to use the layer multiple times or perform analyses with it; temporarily reprojecting the layer(s) is useful for quickly exploring the layer and comparing with other sources.
+
+Download the Greater London OSM shapefile from `geofabrik` (if you haven't already downloaded the full zip file):
+
+```
+http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip
+```
+
+Unzip the file to your working directory, and add the `gis_osm_water_a_free_1` layer:
+
+![London waterways](images/london-waterways.png)
+
+This file uses a different CRS than the London shapefile (specifically it uses WGS84 (or EPSG: `4326`)).
+It is, however, projected in the same CRS as the original London layer:
+Notice in the bottom right the project CRS still shows `27700`.
+This has been reprojected on--the--fly to match the existing layer, so the two layers plot together correctly.
+If they didn't, the Thames would not show up anywhere near London (to see what I mean open the project CRS and select 'No projection (or unknown/non--Earth projection)').
+If this doesn't happen automatically (typically because you haven't selected a default CRS), click the project CRS button in the bottom right and select the project CRS you want to use.
+
+![London waterways layer CRS is WGS84/EPSG: 4326](images/london-waterways-crs.png)
+
+To permanently change the CRS and coordinates of the layer we can **transform** or **reproject** the coordinates into a new CRS (more precisely we create a duplicate layer with the new CRS).
+Under the `Vector` > `Data Management Tools` menu select `Reproject Layer` and select the following options:
+
+- Input layer: `gis_osm_water_a_free_1`
+- Target CRS: `EPSG: 27700 - OSGB 1936 / British National Grid` (search for 27700)
+
+![Reproject layer dialogue](images/reproject-dialogue.png)
+
+Again, I suggest creating this as a temporary layer and saving it when you've verified it (QGIS will warn you if you forget to save it).
+
+
 # Obtain thematic data
+
+We have covered most of the fundamental tools you will need to load and prepare **spatial** data for use in a GIS.
+Now it's time to bring in some thematic data to help us understand the geographical or spatial patterning of our topic of interest.
+
+These 'thematic' data broadly fall into two categories: aggregate and point.
+Points are typically the locations of structures (police stations, schools, takeaways) or events (crimes) and are fairly self--explanatory.
+Aggregate data is the type of data used to produce thematic or choropleth maps.
 
 ## Points
 
