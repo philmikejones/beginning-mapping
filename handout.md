@@ -605,7 +605,12 @@ Now it's time to bring in some thematic data to help us understand the geographi
 
 These 'thematic' data broadly fall into two categories: aggregate and point.
 Points are typically the locations of structures (police stations, schools, takeaways) or events (crimes) and are fairly self--explanatory.
-Aggregate data is the type of data used to produce thematic or choropleth maps.
+Aggregate data is the type of data used to produce thematic or choropleth maps and is gathered by aggregating characteristics of (usually) individuals.
+
+<!--
+TODO: add example aggregate thamatic map
+-->
+
 
 ## Points
 
