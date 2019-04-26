@@ -512,7 +512,7 @@ This is your first programmatic modification of a shapefile!
 
 ## Modify with clip
 
-The last approach we'll use is called a spatial clip.
+The last approach we'll use to modify a layer is called a spatial clip.
 This uses a larger polygon to specify the extent of the smaller polygons we want to keep.
 For example, we might want to keep (clip) all the boroughs in the Greater London region.
 We will achieve this by downloading the local authority districts (LADs) in Great Britain; these include the London Boroughs.
@@ -526,16 +526,43 @@ https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/Engla
 ```
 
 I suggest making a new project.
-Start by creating a new directory (I've called mine `lad`) and open QGIS.
+Start by creating a new directory (I've called mine `lad` for 'Local Authority District') and open QGIS.
 Add `england_gor_2011` from the previous project (`regions`) and save a duplicate as we did in the 'Create a backup copy' section, making sure to save it into the new project ('lad').
-Load `england_gor_2011_edit` (or whatever you called your copy) and `England_lad_2011` into your layers panel, and you should have something that looks like this:
+Load `england_gor_2011_edit` (or whatever you called the copy you just made) and `England_lad_2011` into your layers panel, and you should have something that looks like this:
 
 ![Regions and LAD layers ready for clipping](images/clip-exercise-layers.png)
 
-<!--
-TODO
-Editing shapefiles: clipping; manual
--->
+Select (click) on the `england_gor_2011_edit` layer.
+Right--click and press 'Filter' as we did before, and enter `"name" = 'London'` in the expression.
+When you `Test` this it should return 1 row.
+Press 'Ok'.
+
+This leaves us with just the London 'region', which we are now going to clip our local authorities to, saving us having to select each London Borough manually.
+Under the `Vector` > `Geoprocessing Tools` menu select `Clip`:
+
+![Vector clip](images/vector-clip.png)
+
+In the dialogue box enter the following settings:
+
+- Input layer: `england_lad_2011` (this is the layer we're going to clip)
+- Overlay layer: `england_gor_2011_edit` (this is what we'll clip it to)
+- Clipped: leave as temporary layer
+
+I tend to write my clipped polygon to a temporary layer as it's easy to discard if I get it wrong (which frequently happens!); you can always save it once you've validated it (QGIS will remind you to save if you forget).
+The only time it might be worth specifying a filename in advance is if you're clipping very large files.
+
+![Vector clip dialogue](images/clip-dialogue.png)
+
+Press 'Run'.
+You should be left with 33 London Boroughs that match the London region outline.
+
+![London Boroughs](images/clip-result.png)
+
+
+We have used three different ways (and even combined two) to select boundaries with QGIS.
+It is often the case that if you are using different layers from the same source the boundaries match and you can use clips (as we did with two layers from one source).
+In the wild, especially if using layers from different sources, it is necessary to use the GUI or filter by expression tools (or a combination of both) to select the layers you need.
+
 
 # Obtain thematic data
 
