@@ -22,7 +22,7 @@ Maps of air pollution, cars per household, education, ethnicity, greenspace, rel
 Maps are used to depict variables and information (themes) of relevance to social researchers.
 These thematic maps are then used to understand the relationship between area and the theme of interest.
 
-![Map of mean house price by local authority July 2016. Greater height indicates greater mean price (£). This map was converted to 3D using the qgis2threejs plugin](images/house-price-stl.png)
+![Map of mean house price by local authority July 2016. Greater height indicates greater mean price (£). This map was converted to 3D using the qgis2threejs plugin\label{house-price-3d}](images/house-price-stl.png)
 
 Area is important because it affects multiple aspects of our lives.
 For example, baby boys born in the UK in 2012-2014 can expect to live to 79.5 years on average, but boys born in the richest part of the country can expect to live nearly a decade longer than boys born in the poorest part of the country (ONS, <https://goo.gl/s4E8Pm>).
@@ -598,14 +598,47 @@ Under the `Vector` > `Data Management Tools` menu select `Reproject Layer` and s
 Again, I suggest creating this as a temporary layer and saving it when you've verified it (QGIS will warn you if you forget to save it).
 
 
-# Obtain thematic data
+# Thematic data
 
 We have covered most of the fundamental tools you will need to load and prepare **spatial** data for use in a GIS.
 Now it's time to bring in some thematic data to help us understand the geographical or spatial patterning of our topic of interest.
-
 These 'thematic' data broadly fall into two categories: aggregate and point.
-Points are typically the locations of structures (police stations, schools, takeaways) or events (crimes) and are fairly self--explanatory.
+
 Aggregate data is the type of data used to produce thematic or choropleth maps and is gathered by aggregating characteristics of (usually) individuals.
+Examples might include the mean life expectancy of females and/or males born today by area, the mean house price by area, or the mean weekly number of cakes consumed by area (yes, I have plotted this; it's important for dental health!).
+Points are typically the locations of structures (police stations, schools, takeaways) or events (crimes) and are fairly self--explanatory.
+
+In the next section we will look at both in turn.
+Aggregate data is slightly more involved, so we will address this type of data first.
+
+
+## Aggregate data
+
+Aggregate data, as we have discussed, is usually displayed based on the aggregated information of (usually) individuals.
+For example we could plot the mean life expectancy of females and/or males born today, or we could plot the total number of females and/or males in that area.
+Just as when we are summarising non--spatial data, it is important to think about the most appropriate way to share our data.
+It might be appropriate to plot the mean number of females in each area (instead of the total), but it would be odd to plot the total life expectancy of all females.
+
+Both of these examples are aggregated from the individual people in that area; we could just as easily aggregate observations of other subjects.
+Figure \ref{house-price-3d} shows the mean house price by local authority district (LAD).
+Here the price of each property sale is the unit of observation.
+
+Using the Boroughs (LADs) of London we clipped in the previous section we are going to produce a thematic map of
+There are three stages to each aggregate thematic map:
+
+1. Load the desired spatial data (we have done this)
+1. Load the thematic data
+1. 'Join' the data based on a unique key
+
+We can then plot and style the final map.
+
+<!-- TODO thematic map of London -->
+
+
+## Point data
+
+
+
 
 <!--
 TODO: add example aggregate thamatic map
