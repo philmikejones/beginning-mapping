@@ -631,7 +631,6 @@ There are three stages to each aggregate thematic map:
 1. 'Join' the data based on a unique key
 
 We can then plot and style the final map.
-
 Begin by downloading *Life expectancy at birth and at age 65 years by local areas, UK* from ONS[^lifeexpect]:
 
 [^lifeexpect]: http://bit.ly/2ZOzwpf
@@ -639,6 +638,22 @@ Begin by downloading *Life expectancy at birth and at age 65 years by local area
 ```
 https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/lifeexpectancyatbirthandatage65bylocalareasuk/current/leatbirthandatage65byukla201517.xls
 ```
+
+For the data to load correctly in QGIS we have to tidy the data table.
+Switch to the `LE at birth - Females` tab.
+
+1. Delete the first two rows (title and blank row).
+1. Delete rows `2`--`260`.
+1. Delete rows `16`--`17`.
+1. Delete rows `35`--`243` (the bottom of the file).
+1. Delete columns `B` and `C`.
+
+To load this sheet into QGIS we now have two alternatives.
+We can convert the spreadsheet into a text--delimited file (such as `.csv`) or load the file in with the spreadsheet layer plugin.
+In LibreOffice Calc or Microsoft Excel open the file and Save As, then change the format to `Text CSV (.csv)`.
+You can then load the resulting file in QGIS with the Layer > Add Layer > Add Delimited Text Layer menu:
+
+
 
 <!-- TODO thematic map of London -->
 
