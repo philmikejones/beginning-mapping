@@ -723,9 +723,12 @@ Go to the `Symbology` tab and change `Single symbol` to `Graduated`.
 Select the column to base the styles on (I've used the most recent 2015--2017 data) and choose a colour ramp (I try to avoid red and green; more on this later).
 Select `Natural Breaks (Jenks)` under `Mode` and, for now, leave all options as their default (we'll talk more about stylistic choices later) and press `Classify`.
 
-![Life expectancy with default gradient styles](images/le-thematic-map-jenks.png)
+![Styling our map](images/le-thematic-map-jenks.png)
 
 The resulting thematic map shows life expectancy at birth for females for all London Boroughs (except City of London).
+
+![Life expectancy at birth for females by London Borough](images/le-london-jenks.png)
+
 Use the `Identify Features` (`CTRL`/`CMD` + `Shift` + `I`) tool to find the names of the boroughs.
 The highest life expectancies are in: Harrow; Barnet; Camden; Westminster, Kensington and Chelsea; Richmond upon Thames; and Bromley.
 The lowest life expectancies are in: Hackney; Tower Hamlets; Newham; Greenwich; and Barking and Dagenham, all on the east side of London.
