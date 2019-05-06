@@ -623,22 +623,24 @@ Both of these examples are aggregated from the individual people in that area; w
 Figure \ref{house-price-3d} shows the mean house price by local authority district (LAD).
 Here the price of each property sale is the unit of observation.
 
-Using the Boroughs (LADs) of London we clipped in the previous section we are going to produce a thematic map of
-There are three stages to each aggregate thematic map:
+Using the Boroughs (LADs) of London we clipped in the previous section we are going to produce a thematic map of life expectancy of females at birth.
+There are three stages to produce each aggregate thematic map:
 
-1. Load the desired spatial data (we have done this)
-1. Load the thematic data
+1. Load the desired spatial data (we have done this in the previous step)
+1. Load the thematic/aggregate data
 1. 'Join' the data based on a unique key
 
 We can then plot and style the final map.
 
 Begin by downloading *Life expectancy at birth and at age 65 years by local areas, UK* from ONS[^lifeexpect]:
 
-[^lifeexpect]: https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/lifeexpectancyatbirthandatage65bylocalareasuk
+[^lifeexpect]: http://bit.ly/2ZOzwpf
 
 ```
 https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/lifeexpectancyatbirthandatage65bylocalareasuk/current/leatbirthandatage65byukla201517.xls
 ```
+
+
 
 <!-- TODO thematic map of London -->
 
