@@ -631,6 +631,10 @@ There are three stages to each aggregate thematic map:
 1. 'Join' the data based on a unique key
 
 We can then plot and style the final map.
+
+
+### Load data
+
 Begin by downloading *Life expectancy at birth and at age 65 years by local areas, UK* from ONS[^lifeexpect]:
 
 [^lifeexpect]: http://bit.ly/2ZOzwpf
@@ -639,19 +643,92 @@ Begin by downloading *Life expectancy at birth and at age 65 years by local area
 https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/lifeexpectancyatbirthandatage65bylocalareasuk/current/leatbirthandatage65byukla201517.xls
 ```
 
-For the data to load correctly in QGIS we have to tidy the data table.
-Switch to the `LE at birth - Females` tab.
+For the data to load correctly in QGIS we have to tidy the data table, just as we prepare non--spatial data sets.
+First, before we make any destructive changes to our data it is good practice to make a copy.
+In this case we can easily download a fresh copy of the data, but I strongly suggest this is a good habit to get into for those occasions when it *is* time consuming to replace the data.
+Create a copy of `leatbirthandatage65byukla201517.xls`, either in your file explorer or by opening in your spreadsheet programme and `Save As`.
+Open the file and switch to the `LE at birth - Females` tab.
 
 1. Delete the first two rows (title and blank row).
 1. Delete rows `2`--`260`.
 1. Delete rows `16`--`17`.
 1. Delete rows `35`--`243` (the bottom of the file).
 1. Delete columns `B` and `C`.
+1. We do not have any data for City of London (row 3) but we need to replace the dots (`..`) with blank cells so delete these.
 
 To load this sheet into QGIS we now have two alternatives.
 We can convert the spreadsheet into a text--delimited file (such as `.csv`) or load the file in with the spreadsheet layer plugin.
+We'll go through both options, but I generally recommend converting to `.csv`; it's an open, text--only format so you will always be able to open it and you can use scripts to manipulate the file in bulk if necessary.
+
 In LibreOffice Calc or Microsoft Excel open the file and Save As, then change the format to `Text CSV (.csv)`.
-You can then load the resulting file in QGIS with the Layer > Add Layer > Add Delimited Text Layer menu:
+
+![Save as csv](images/save-as-text-csv.png)
+
+Under LibreOffice Calc you can use the default options.
+
+![csv default options](images/csv-default-options.png)
+
+Finally you should receive a warning to say that only the active sheet was saved.
+`.csv` files only save one worksheet at a time, so this process has saved only the active worksheet and dropped all others.
+If you're working on the `LE at birth - Females` tab this is the active one, and what has been saved to your `csv` file.
+
+![Warning reminding you that only the current sheet was saved as csv](images/csv-warning-current-sheet.png)
+
+You can then load the resulting file in QGIS with the `Layer` > `Add Layer` > `Add Delimited Text Layer` menu or the `Data Source Manager` (`CTRL`/`CMD` + `L`):
+
+![Add delimited text (csv) layer](images/add-delimited-text.png)
+
+From here browse to your file (if you are using Windows you will see the more familiar file path beginning with `C:`) and QGIS will automatically detect most settings.
+Ensure `CSV (comma separated values)` and `No geometry (attribute only table)` are selected.
+You should see a preview that looks correct.
+Go ahead and press `Add` then `Close`.
+
+If you prefer to load `xls` files directly instead we need to install a plugin to handle this.
+Go to `Plugins` > `Manage and Install Plugins...` menu and search for `spreadsheet` and install the `Spreadsheet Layers` plugin:
+
+![Install Spreadsheet Layers plugin](images/install-spreadsheet-layers-plugin.png)
+
+Now open `Layer` > `Add Layer` > `Add spreadsheet layer` from the menu:
+
+![Add spreadsheet layer](images/add-spreadsheet-layer-dialogue.png)
+
+You need to provide a file path and make sure you select the correct Sheet (LE at birth - Females).
+Ensure you tick `Header at first line` and `End of file detection`, and check the preview looks correct before pressing `OK`.
+
+Whichever method you've chosen you should now see a new layer in your Layers panel listing the table.
+We will now join this to our spatial data.
+
+
+### Join to spatial data
+
+So that QGIS (or indeed any GIS software) knows which row in this table corresponds to each zone we must join the data.
+We typically join with a zone or geometry code which is unique and unambiguous, just like we would use an id to join records across database tables.
+This is what we will do for this example.
+Sometimes, though, your data may only contain names which do not always match precisely (regions are the worst offenders for this; is it 'Yorkshire and The Humber' or 'Yorkshire and the Humber'? It's the former, but I've seen both.)
+To do any join it is your job to ensure the zone identifier in your geometry file match the zone identifier in your thematic data.
+
+Begin by highlighting (single--click) on the spatial layer.
+Right--click the layer and press `Properties` and select the `Joins` tab.
+Press `Add` (the green `+`) then:
+
+1. Select the `Join layer` (this is the table layer)
+1. Select the `Join field` (this is the id column in the table layer)
+1. Select the `Target field` (this is the id column in the geometry layer)
+1. Leave all other options as their default
+
+![Join dialogue](images/vector-join-dialogue.png)
+
+Now we can style our thematic map.
+Go to the `Symbology` tab and change `Single symbol` to `Graduated`.
+Select the column to base the styles on (I've used the most recent 2015--2017 data) and choose a colour ramp (I try to avoid red and green; more on this later).
+Select `Natural Breaks (Jenks)` under `Mode` and, for now, leave all options as their default (we'll talk more about stylistic choices later) and press `Classify`.
+
+![Life expectancy with default gradient styles](images/le-thematic-map-jenks.png)
+
+The resulting thematic map shows life expectancy at birth for females for all London Boroughs (except City of London).
+Use the `Identify Features` (`CTRL`/`CMD` + `Shift` + `I`) tool to find the names of the boroughs.
+The highest life expectancies are in: Harrow; Barnet; Camden; Westminster, Kensington and Chelsea; Richmond upon Thames; and Bromley.
+The lowest life expectancies are in: Hackney; Tower Hamlets; Newham; Greenwich; and Barking and Dagenham, all on the east side of London.
 
 
 
