@@ -731,21 +731,12 @@ The highest life expectancies are in: Harrow; Barnet; Camden; Westminster, Kensi
 The lowest life expectancies are in: Hackney; Tower Hamlets; Newham; Greenwich; and Barking and Dagenham, all on the east side of London.
 
 
-
-<!-- TODO thematic map of London -->
-
+<!--TODO Choosing styles -->
+<!--TODO Choosing styles -->
 
 ## Point data
 
 
-
-
-<!--
-TODO: add example aggregate thamatic map
--->
-
-
-# Join spatial and thematic data
 
 # Plot the map
 
@@ -822,4 +813,10 @@ http://spatialreference.org/ref/epsg/
 
 ```
 https://thetruesize.com
+```
+
+### Styles
+
+```
+http://colorbrewer2.org/
 ```
