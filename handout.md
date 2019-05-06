@@ -735,13 +735,9 @@ The lowest life expectancies are in: Hackney; Tower Hamlets; Newham; Greenwich; 
 
 
 <!--TODO Choosing styles -->
-<!--TODO Choosing styles -->
 
 ## Point data
 
-
-
-# Plot the map
 
 # Export the map
 
