@@ -112,7 +112,7 @@ Don't worry if you don't manage to install these; I can help you on the day if n
 To produce our maps we will use QGIS, a mature, open-source GIS used extensively in academia, public organisations, and private companies.
 QGIS is open source software and is free to download and use for any purpose.
 
-I **strongly** recommend you download verion 3.x of QGIS; not version 2.x as this is being deprecated.
+I *strongly* recommend you download verion 3.x of QGIS; not version 2.x as this is being deprecated.
 I also recommend you use the current long--term release (LTR), which is currently 3.4.
 
 To open QGIS:
@@ -281,7 +281,7 @@ Don't worry too much about these; in practice most spatial data now specifies a 
 You only need to know about these if:
 
 - the spatial data does not bundle a CRS and you need to specify it manually, or
-- you have data sets in different CRSs and you need to *transform* or **reproject** one or more data sets to be consistent (I describe how to do this below).
+- you have data sets in different CRSs and you need to *transform* or *reproject* one or more data sets to be consistent (I describe how to do this below).
 
 If you are using UK data from sources such as the OS the CRS is almost certainly the British National Grid (27700).
 
@@ -587,7 +587,7 @@ If this doesn't happen automatically (typically because you haven't selected a d
 
 ![London waterways layer CRS is WGS84/EPSG: 4326](images/london-waterways-crs.png)
 
-To permanently change the CRS and coordinates of the layer we can **transform** or **reproject** the coordinates into a new CRS (more precisely we create a duplicate layer with the new CRS).
+To permanently change the CRS and coordinates of the layer we can *transform* or *reproject* the coordinates into a new CRS (more precisely we create a duplicate layer with the new CRS).
 Under the `Vector` > `Data Management Tools` menu select `Reproject Layer` and select the following options:
 
 - Input layer: `gis_osm_water_a_free_1`
@@ -600,7 +600,7 @@ Again, I suggest creating this as a temporary layer and saving it when you've ve
 
 # Thematic data
 
-We have covered most of the fundamental tools you will need to load and prepare **spatial** data for use in a GIS.
+We have covered most of the fundamental tools you will need to load and prepare *spatial* data for use in a GIS.
 Now it's time to bring in some thematic data to help us understand the geographical or spatial patterning of our topic of interest.
 These 'thematic' data broadly fall into two categories: aggregate and point.
 
@@ -623,15 +623,14 @@ Both of these examples are aggregated from the individual people in that area; w
 Figure \ref{house-price-3d} shows the mean house price by local authority district (LAD).
 Here the price of each property sale is the unit of observation.
 
-Using the Boroughs (LADs) of London we clipped in the previous section we are going to produce a thematic map of life expectancy of females at birth.
-There are three stages to produce each aggregate thematic map:
+Using the Boroughs (LADs) of London we clipped in the previous section we are going to produce a thematic map of
+There are three stages to each aggregate thematic map:
 
-1. Load the desired spatial data (we have done this in the previous step)
-1. Load the thematic/aggregate data
+1. Load the desired spatial data (we have done this)
+1. Load the thematic data
 1. 'Join' the data based on a unique key
 
 We can then plot and style the final map.
-
 Begin by downloading *Life expectancy at birth and at age 65 years by local areas, UK* from ONS[^lifeexpect]:
 
 [^lifeexpect]: http://bit.ly/2ZOzwpf
@@ -639,6 +638,20 @@ Begin by downloading *Life expectancy at birth and at age 65 years by local area
 ```
 https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/lifeexpectancyatbirthandatage65bylocalareasuk/current/leatbirthandatage65byukla201517.xls
 ```
+
+For the data to load correctly in QGIS we have to tidy the data table.
+Switch to the `LE at birth - Females` tab.
+
+1. Delete the first two rows (title and blank row).
+1. Delete rows `2`--`260`.
+1. Delete rows `16`--`17`.
+1. Delete rows `35`--`243` (the bottom of the file).
+1. Delete columns `B` and `C`.
+
+To load this sheet into QGIS we now have two alternatives.
+We can convert the spreadsheet into a text--delimited file (such as `.csv`) or load the file in with the spreadsheet layer plugin.
+In LibreOffice Calc or Microsoft Excel open the file and Save As, then change the format to `Text CSV (.csv)`.
+You can then load the resulting file in QGIS with the Layer > Add Layer > Add Delimited Text Layer menu:
 
 
 
@@ -685,8 +698,8 @@ https://gis.stackexchange.com/
 
 This document contains maps produced using boundary data used under the terms of the Open Government License.
 
-**Contains National Statistics data © Crown copyright and database right [2019]
-    Contains OS data © Crown copyright [and database right] (2019)**
+*Contains National Statistics data © Crown copyright and database right [2019]
+    Contains OS data © Crown copyright [and database right] (2019)*
 
 
 # References
