@@ -696,7 +696,31 @@ You need to provide a file path and make sure you select the correct Sheet (LE a
 Ensure you tick `Header at first line` and `End of file detection`, and check the preview looks correct before pressing `OK`.
 
 Whichever method you've chosen you should now see a new layer in your Layers panel listing the table.
-We will now join this to our spatial data.
+
+Before we join this to our spatial data it is advisable to perform a last check on the data to ensure it has been imported correctly and deal with any edge cases.
+Click on the `leatbirthandatage65byukla201517.csv` layer and open the attribute table (`F6`) or `Layer` > `Open Attribute Table` menu item.
+You should see something like the following:
+
+![Life expectancy layer attribute table](images/attribute-table.png)
+
+Notice that row 12 (City of London) has *`NULL`* for each year.
+This is genuinely missing data from the original spreadsheet and is not an import error, but we do have to correct this or it will affect our plot.
+To correct this we are going to remove it.
+
+The area code for City of London is `E09000001` (you can copy it from the attribute table if you like by right--clicking on the cell and pressing `Copy Cell Content`).
+Close the attribute table, select the layer in the `Layers` panel, right--click and press `Filter`.
+As before we are going to filter only the cases we want (using the filter we do not need to alter the original file in any way).
+This time, however, we are going to retain cases that *do not* match our criterion (i.e. we exclude City of London, which is much more efficient than including all other boroughs individually).
+Enter the following expression, either by clicking or typing directly as before (noting the double quotes around the label and the single quotes around the value):
+
+```
+"Area Codes" != 'E09000001'
+```
+
+![Filter City of London](images/filter-city-of-london.png)
+
+When you `Test` this 32 rows should remain.
+Press `OK` (and optionally verify the attribute table again).
 
 
 ### Join to spatial data
@@ -714,14 +738,16 @@ Press `Add` (the green `+`) then:
 1. Select the `Join layer` (this is the table layer)
 1. Select the `Join field` (this is the id column in the table layer)
 1. Select the `Target field` (this is the id column in the geometry layer)
+1. If you know you only need specific columns tick `Joined Fields` and click the arrow to display a list of columns and select only those you need. We only need `Area Codes` and `2015-2017` so tick these.
 1. Leave all other options as their default
+1. Press `OK` then `Apply`.
 
 ![Join dialogue](images/vector-join-dialogue.png)
 
 Now we can style our thematic map.
 Go to the `Symbology` tab and change `Single symbol` to `Graduated`.
-Select the column to base the styles on (I've used the most recent 2015--2017 data) and choose a colour ramp (I try to avoid red and green; more on this later).
-Select `Natural Breaks (Jenks)` under `Mode` and, for now, leave all options as their default (we'll talk more about stylistic choices later) and press `Classify`.
+Select the column to base the styles on (I've used the most recent `2015-2017` data) and choose a colour ramp (I try to avoid red and green; more on this later).
+Select `Natural Breaks (Jenks)` under `Mode` and, for now, leave all options as their default (we'll talk more about these choices later) and press `Classify` then `Apply`.
 
 ![Styling our map](images/le-thematic-map-jenks.png)
 
@@ -730,9 +756,25 @@ The resulting thematic map shows life expectancy at birth for females for all Lo
 ![Life expectancy at birth for females by London Borough](images/le-london-jenks.png)
 
 Use the `Identify Features` (`CTRL`/`CMD` + `Shift` + `I`) tool to find the names of the boroughs.
-The highest life expectancies are in: Harrow; Barnet; Camden; Westminster, Kensington and Chelsea; Richmond upon Thames; and Bromley.
+The highest life expectancies are in: Harrow; Camden; Westminster, Kensington and Chelsea; and Richmond upon Thames.
 The lowest life expectancies are in: Hackney; Tower Hamlets; Newham; Greenwich; and Barking and Dagenham, all on the east side of London.
+We'll get into analysis later, but if you're at all familiar with London you will no doubt notice a pattern to these.
 
+Congratulations on producing your first thematic map!
+
+
+## Breaks
+
+When mapping life expectancy above I simply instructed you to use `Natural Breaks (Jenks)`, but choosing (and styling) breaks is so important that I want to spend some time discussing this properly now.
+Just as when we are presenting non--spatial data it is essential to think about how we present that data, particularly when we group data into categories (or 'cut' it) which is typically necessary when presenting spatial data[^alternatives-to-cut].
+
+[^alternatives-to-cut]: There are alternatives to cutting or grouping the data, including using a smooth continuous gradient and plotting a 3D image and using the z--axis to denote the theme, but cutting the data is the most common approach.
+
+
+
+
+
+### Colours
 
 <!--TODO Choosing styles -->
 
