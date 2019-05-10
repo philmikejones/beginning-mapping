@@ -694,42 +694,26 @@ Now open `Layer` > `Add Layer` > `Add spreadsheet layer` from the menu:
 
 You need to provide a file path and make sure you select the correct Sheet (LE at birth - Females).
 Ensure you tick `Header at first line` and `End of file detection`, and check the preview looks correct before pressing `OK`.
-
 Whichever method you've chosen you should now see a new layer in your Layers panel listing the table.
 
 Before we join this to our spatial data it is advisable to perform a last check on the data to ensure it has been imported correctly and deal with any edge cases.
-Click on the `leatbirthandatage65byukla201517.csv` layer and open the attribute table (`F6`) or `Layer` > `Open Attribute Table` menu item.
+Click on the `leatbirthandatage65byukla201517.csv` layer and open the attribute table (`F6`, or `Layer` > `Open Attribute Table` menu item).
 You should see something like the following:
 
 ![Life expectancy layer attribute table](images/attribute-table.png)
 
 Notice that row 12 (City of London) has *`NULL`* for each year.
-This is genuinely missing data from the original spreadsheet and is not an import error, but we do have to correct this or it will affect our plot.
-To correct this we are going to remove it.
-
-The area code for City of London is `E09000001` (you can copy it from the attribute table if you like by right--clicking on the cell and pressing `Copy Cell Content`).
-Close the attribute table, select the layer in the `Layers` panel, right--click and press `Filter`.
-As before we are going to filter only the cases we want (using the filter we do not need to alter the original file in any way).
-This time, however, we are going to retain cases that *do not* match our criterion (i.e. we exclude City of London, which is much more efficient than including all other boroughs individually).
-Enter the following expression, either by clicking or typing directly as before (noting the double quotes around the label and the single quotes around the value):
-
-```
-"Area Codes" != 'E09000001'
-```
-
-![Filter City of London](images/filter-city-of-london.png)
-
-When you `Test` this 32 rows should remain.
-Press `OK` (and optionally verify the attribute table again).
+This is genuinely missing data from the original spreadsheet and is not an import error, so we will fix this later.
+First we will join the thematic data to the spatial data.
 
 
 ### Join to spatial data
 
 So that QGIS (or indeed any GIS software) knows which row in this table corresponds to each zone we must join the data.
 We typically join with a zone or geometry code which is unique and unambiguous, just like we would use an id to join records across database tables.
-This is what we will do for this example.
 Sometimes, though, your data may only contain names which do not always match precisely (regions are the worst offenders for this; is it 'Yorkshire and The Humber' or 'Yorkshire and the Humber'? It's the former, but I've seen both.)
 To do any join it is your job to ensure the zone identifier in your geometry file match the zone identifier in your thematic data.
+For this example we will use a unique area code.
 
 Begin by highlighting (single--click) on the spatial layer.
 Right--click the layer and press `Properties` and select the `Joins` tab.
@@ -738,16 +722,56 @@ Press `Add` (the green `+`) then:
 1. Select the `Join layer` (this is the table layer)
 1. Select the `Join field` (this is the id column in the table layer)
 1. Select the `Target field` (this is the id column in the geometry layer)
-1. If you know you only need specific columns tick `Joined Fields` and click the arrow to display a list of columns and select only those you need. We only need `Area Codes` and `2015-2017` so tick these.
+1. If you know you only need specific columns tick `Joined Fields` and click the arrow to display a list of columns and select only those you need. We only need `2015-2017` so tick this.
 1. Leave all other options as their default
 1. Press `OK` then `Apply`.
 
 ![Join dialogue](images/vector-join-dialogue.png)
 
-Now we can style our thematic map.
-Go to the `Symbology` tab and change `Single symbol` to `Graduated`.
-Select the column to base the styles on (I've used the most recent `2015-2017` data) and choose a colour ramp (I try to avoid red and green; more on this later).
-Select `Natural Breaks (Jenks)` under `Mode` and, for now, leave all options as their default (we'll talk more about these choices later) and press `Classify` then `Apply`.
+Now we can style our thematic map, and it is at this stage that we deal with the missing data.
+There are a few ways to do this in QGIS, but the most straightforward way is to duplicate the layer and use one copy to display non--missing data, and to use the other copy to display the missing data only.
+
+Begin by right--clicking the spatial layer and select `Filter`.
+QGIS will prompt you to create a virtual layer.
+Select `Yes`.
+It is at this stage that QGIS creates a duplicate layer with the same name as the original layer with '`(virtual)`' appended.
+As before construct the following query by double--clicking fields and typing:
+
+```
+"leatbirthandatage65byukla201517_2015-2017" is null
+```
+
+When you test this one layer should be selected.
+Press `OK`.
+Just one zone should now be displayed.
+Rename this layer from `london-boroughs (virtual)` (or whatever you have called it) to '`Missing`'.
+Not only does this serve to remind us but this is the default label that will be applied to the legend later when we export our map.
+
+Now right--click on the original layer and `Filter` again, agree to creating a virtual layer, and QGIS will create another duplicate (you should have three versions of the layer at this point).
+In this filter expression enter:
+
+```
+"leatbirthandatage65byukla201517_2015-2017" not null
+```
+
+When you test this 32 rows should remain.
+Press `OK`.
+Rename this layer `Life expectancy` (again this will be the default label for the legend later).
+
+Now we can begin styling our map.
+First right--click on the missing layer and press `Properties` and select the `Symbology` tab.
+Leave this as `Single symbol`, but a grey is common for missing data so choose a grey fill and press `OK`.
+
+![Style missing as grey](images/missing-single-symbol-grey.png)
+
+Now style the `Life expectancy` layer, again by right--clicking, selecting `Properties`, and the `Symbology` tab.
+Select the following options:
+
+- Graduated
+- Column: `leatbirthandatage65byukla201517_2015-2017`
+- Colour ramp: `Blues`
+- Mode: `Natural Breaks (Jenks)`
+- Press `OK`.
 
 ![Styling our map](images/le-thematic-map-jenks.png)
 
