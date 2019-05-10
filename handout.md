@@ -831,7 +831,7 @@ When choosing colours there are three types of data and they require a different
 - Indicating either side of a divide (e.g. above or below median income) - use a diverging palette
 - Labelling - if the colour will not denote data but will otherwise label the point use a qualitative palette (for example names of areas)
 
-Stay away from using red and green in the same map.
+Avoid using red and green in the same map.
 
 
 ## Point data
