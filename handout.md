@@ -737,7 +737,7 @@ Select `Yes`.
 It is at this stage that QGIS creates a duplicate layer with the same name as the original layer with '`(virtual)`' appended.
 As before construct the following query by double--clicking fields and typing:
 
-```
+```python
 "leatbirthandatage65byukla201517_2015-2017" is null
 ```
 
@@ -750,7 +750,7 @@ Not only does this serve to remind us but this is the default label that will be
 Now right--click on the original layer and `Filter` again, agree to creating a virtual layer, and QGIS will create another duplicate (you should have three versions of the layer at this point).
 In this filter expression enter:
 
-```
+```python
 "leatbirthandatage65byukla201517_2015-2017" not null
 ```
 
@@ -792,15 +792,47 @@ Congratulations on producing your first thematic map!
 When mapping life expectancy above I simply instructed you to use `Natural Breaks (Jenks)`, but choosing (and styling) breaks is so important that I want to spend some time discussing this properly now.
 Just as when we are presenting non--spatial data it is essential to think about how we present that data, particularly when we group data into categories (or 'cut' it) which is typically necessary when presenting spatial data[^alternatives-to-cut].
 
-[^alternatives-to-cut]: There are alternatives to cutting or grouping the data, including using a smooth continuous gradient and plotting a 3D image and using the z--axis to denote the theme, but cutting the data is the most common approach.
+[^alternatives-to-cut]: There are alternatives to cutting or grouping the data, including using a smooth continuous gradient and plotting a 3D image and using the z--axis to denote the theme, but cutting the data is the most common approach and the one we will use here.
+
+The options when classifying data are:
+
+- `Equal interval` produce intervals that are equally spaced, useful for ranked data such as percentiles (deciles, quintiles, etc.
+- `Quantile (Equal Count)` splits the data so that there are an equal number of cases in each interval, creates ranked data.
+- `Natural Breaks (Jenks)` splits the data statistically to maximise the difference between groups and minimise the difference within groups. Usually a good starting point.
+- `Standard Deviation`, useful for seeing how much values deviate below or above the mean. Income is a common example.
+- `Pretty Breaks`, generally not recommended.
+- `Manual`, for greatest control.
+
+The `Histogram` tab can be used to create and tweak manual breaks in the data.
+Begin by pressing `Load Values` and select the number of bins you would like, and add the mean and standard deviation if you would life.
+You can then drag and reposition the thresholds to fit your requirements.
+
+![Histogram](images/histogram.png)
+
+`GIS Geography` offer an accessible article discussing the uses of the different classification methods:
+
+```
+https://gisgeography.com/choropleth-maps-data-classification/
+```
 
 
+## Colours
 
+Colour is one of the main ways you will denote thematic aggregate data on a choropleth map (height, or `z`--index being the other main option).
+QGIS has lots of colour palettes, and an absolutely fantastic resource if you need more palettes is:
 
+```
+http://colorbrewer2.org/
+```
 
-### Colours
+When choosing colours there are three types of data and they require a different treatment of colour palette:
 
-<!--TODO Choosing styles -->
+- Increase/decrease in values - use a sequential palette (such as we used for life expectancy above)
+- Indicating either side of a divide (e.g. above or below median income) - use a diverging palette
+- Labelling - if the colour will not denote data but will otherwise label the point use a qualitative palette (for example names of areas)
+
+Stay away from using red and green in the same map.
+
 
 ## Point data
 
