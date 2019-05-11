@@ -833,7 +833,12 @@ Download the Care Quality Commission (CQC) care directory and unzip it:
 https://www.cqc.org.uk/sites/default/files/08_May_2019_CQC_directory.zip
 ```
 
-This is a file that lists every place in England that is regulated by the CQC, including GP practices.
+This is a file that lists every place in England that is regulated by the CQC, including GP practices, hospitals, care homes, and dentists.
+We are going to plot the location of GP practices in London on top of our existing life expectancy map.
+Each place in this file has a postcode provided which we are going to convert to coordinates in a process called *geocoding*.
+First open the file in your chosen spreadsheet programme.
+The file is comma delimited so ensure you use commas to separate fields when importing.
+
 
 
 # Export the map
@@ -860,10 +865,12 @@ https://gis.stackexchange.com/
 
 # Acknowledgements
 
-This document contains maps produced using boundary data used under the terms of the Open Government License.
+This document contains data obtained and used under the terms of the Open Government License.
 
 *Contains National Statistics data © Crown copyright and database right [2019]
     Contains OS data © Crown copyright [and database right] (2019)*
+
+*Contains Care Quality Commission data © Care Quality Commission (2019)*
 
 
 # References
