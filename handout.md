@@ -836,8 +836,69 @@ https://www.cqc.org.uk/sites/default/files/08_May_2019_CQC_directory.zip
 This is a file that lists every place in England that is regulated by the CQC, including GP practices, hospitals, care homes, and dentists.
 We are going to plot the location of GP practices in London on top of our existing life expectancy map.
 Each place in this file has a postcode provided which we are going to convert to coordinates in a process called *geocoding*.
-First open the file in your chosen spreadsheet programme.
-The file is comma delimited so ensure you use commas to separate fields when importing.
+
+First open the file in your chosen spreadsheet programme[^no-copy].
+The file is comma delimited so ensure you use commas to separate fields when importing, and import data from row 5 to strip the header information.
+
+[^no-copy]: Note I have not first made a copy despite my earlier recommendations to do this before making destructive changes to a file.
+This is because we have the `zip` archive so if we make a mistake we can delete the file we're working on and simply extract the `zip` again.
+
+![Import settings for CQC data](images/import-cqc-data.png)
+
+Once you have the file imported we are going to delete rows we do not need to plot.
+Geocoding is an expensive operation (both in terms of time and, often, money if you need to pay for access to a geocoding service).
+Note the row numbers are approximate; the CQC data is updated regularly so the file you download may differ from the one I am demonstrating on here.
+
+1. Sort the data on the `Service types` column (column G).
+1. Delete rows 2--13358 (Ambulances to Diagnosis/screening).
+1. Delete rows 8628--36115 (the end of the file).
+1. You should be left only with GP surgeries.
+
+We can filter this file further by removing practices outside the London area since we will not plot these.
+
+1. Sort the data on the `Region` column (column L).
+1. Delete rows 2--1431 (East to East Midlands).
+1. Delete rows 1900-- to the end of the file.
+
+You should be left with GP surgeries in London only (of which there are about 1898).
+We can also tidy up the columns to make managing the data easier.
+Optionally delete:
+
+1. B: Also known as
+1. E: Phone number
+1. F: Service's website
+1. G: Service types
+1. H: Date of latest check
+1. I: Specialisms/services
+1. J: Provider name
+1. L: Region
+1. M: Location URL
+1. N: CQC Location
+1. O: CQC Provider ID
+
+Create two new columns, one called '`easting`' (east--west) and one called '`norting`' (north--south).
+`GetTheData` host downloadable bulk csv files with coordinates for all postcodes in Great Britain (England, Scotland, and Wales).
+These are the most straightforward way to append coordinates to our file because we can simply filter only London postcodes, making the data much more manageable.
+You can download these files from:
+
+```
+https://www.getthedata.com/open-postcode-geo
+```
+
+If you are going to perform more complicated geocoding tasks I strongly recommend you look into using the API:
+
+```
+https://www.getthedata.com/open-postcode-geo-api
+```
+
+To use this you will need to work with `json` files which is beyond the scope of this course, but I recommend you get started with python's `json` library.
+
+Because of the size of the master csv file I have already downloaded it and processed it so it only contains the postcodes we need.
+Download this file:
+
+```
+
+```
 
 
 
