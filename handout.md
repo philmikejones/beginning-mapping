@@ -703,8 +703,14 @@ You should see something like the following:
 ![Life expectancy layer attribute table](images/attribute-table.png)
 
 Notice that row 12 (City of London) has *`NULL`* for each year.
-This is genuinely missing data from the original spreadsheet and is not an import error, so we will fix this later.
-First we will join the thematic data to the spatial data.
+This is genuinely missing data from the original spreadsheet and is not an import error.
+If your data has any missing values the most straightforward way to manage this is first to make a duplicate of your layer.
+Right--click on the spatial layer in the layers panel and press `Duplicate Layer`.
+Rename the copy '`Missing`' which both serves to remind us later and this forms the default label when we come to add a legend to our map later.
+
+![Layers panel with duplicated spatial layer](images/layer-panel-duplicate-missing.png)
+
+Once you have done this we can move on to join the thematic data to the spatial data.
 
 
 ### Join to spatial data
@@ -831,10 +837,21 @@ When choosing colours there are three types of data and they require a different
 - Indicating either side of a divide (e.g. above or below median income) - use a diverging palette
 - Labelling - if the colour will not denote data but will otherwise label the point use a qualitative palette (for example names of areas)
 
-Avoid using red and green in the same map.
+Avoid using red and green in the same map or viewers with red--green colour blindness will struggle to differentiate colours[^deuteranopia].
+
+[^deuteranopia]: https://www.color-blindness.com/deuteranopia-red-green-color-blindness/
 
 
 ## Point data
+
+Having looked at aggregate data and produced a choropleth map, we are now going to add some point data.
+Download the Care Quality Commission (CQC) care directory and unzip it:
+
+```
+https://www.cqc.org.uk/sites/default/files/08_May_2019_CQC_directory.zip
+```
+
+This is a file that lists every place in England that is regulated by the CQC, including GP practices.
 
 
 # Export the map
