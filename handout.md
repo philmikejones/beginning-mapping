@@ -703,14 +703,8 @@ You should see something like the following:
 ![Life expectancy layer attribute table](images/attribute-table.png)
 
 Notice that row 12 (City of London) has *`NULL`* for each year.
-This is genuinely missing data from the original spreadsheet and is not an import error.
-If your data has any missing values the most straightforward way to manage this is first to make a duplicate of your layer.
-Right--click on the spatial layer in the layers panel and press `Duplicate Layer`.
-Rename the copy '`Missing`' which both serves to remind us later and this forms the default label when we come to add a legend to our map later.
-
-![Layers panel with duplicated spatial layer](images/layer-panel-duplicate-missing.png)
-
-Once you have done this we can move on to join the thematic data to the spatial data.
+This is genuinely missing data from the original spreadsheet and is not an import error, and we will deal with this shortly.
+For now we can move on to join the thematic data to the spatial data.
 
 
 ### Join to spatial data
@@ -721,7 +715,7 @@ Sometimes, though, your data may only contain names which do not always match pr
 To do any join it is your job to ensure the zone identifier in your geometry file match the zone identifier in your thematic data.
 For this example we will use a unique area code.
 
-Begin by highlighting (single--click) on the spatial layer.
+Begin by highlighting (single--click) the spatial layer.
 Right--click the layer and press `Properties` and select the `Joins` tab.
 Press `Add` (the green `+`) then:
 
@@ -730,31 +724,16 @@ Press `Add` (the green `+`) then:
 1. Select the `Target field` (this is the id column in the geometry layer)
 1. If you know you only need specific columns tick `Joined Fields` and click the arrow to display a list of columns and select only those you need. We only need `2015-2017` so tick this.
 1. Leave all other options as their default
-1. Press `OK` then `Apply`.
+1. Press `OK` then `OK` again.
 
 ![Join dialogue](images/vector-join-dialogue.png)
 
-Now we can style our thematic map, and it is at this stage that we deal with the missing data.
-There are a few ways to do this in QGIS, but the most straightforward way is to duplicate the layer and use one copy to display non--missing data, and to use the other copy to display the missing data only.
-
+Now we are going to deal with the missing data.
 Begin by right--clicking the spatial layer and select `Filter`.
 QGIS will prompt you to create a virtual layer.
 Select `Yes`.
 It is at this stage that QGIS creates a duplicate layer with the same name as the original layer with '`(virtual)`' appended.
-As before construct the following query by double--clicking fields and typing:
-
-```python
-"leatbirthandatage65byukla201517_2015-2017" is null
-```
-
-When you test this one layer should be selected.
-Press `OK`.
-Just one zone should now be displayed.
-Rename this layer from `london-boroughs (virtual)` (or whatever you have called it) to '`Missing`'.
-Not only does this serve to remind us but this is the default label that will be applied to the legend later when we export our map.
-
-Now right--click on the original layer and `Filter` again, agree to creating a virtual layer, and QGIS will create another duplicate (you should have three versions of the layer at this point).
-In this filter expression enter:
+In the `Query Builder` dialogue box enter the following expression by double--clicking/typing as necessary:
 
 ```python
 "leatbirthandatage65byukla201517_2015-2017" not null
@@ -762,11 +741,13 @@ In this filter expression enter:
 
 When you test this 32 rows should remain.
 Press `OK`.
-Rename this layer `Life expectancy` (again this will be the default label for the legend later).
-
+Rename the layer with '`(virtual)`' appended to '`Life expectancy`'.
+Rename the original layer (i.e. without '`(virtual)`' appended) '`Missing`', which will remind us which layer is which and will serve as the default legend titles when we come to export our map later.
 Now we can begin styling our map.
-First right--click on the missing layer and press `Properties` and select the `Symbology` tab.
-Leave this as `Single symbol`, but a grey is common for missing data so choose a grey fill and press `OK`.
+
+If you wish to change the style of the 'missing' layer right--click on it and press `Properties` and select the `Symbology` tab.
+Leave this as `Single Symbol` and choose an appropriate fill colour; grey is common for missing data.
+If this layer does not show don't forget to tick it in the layers panel to activate it.
 
 ![Style missing as grey](images/missing-single-symbol-grey.png)
 
@@ -774,7 +755,7 @@ Now style the `Life expectancy` layer, again by right--clicking, selecting `Prop
 Select the following options:
 
 - Graduated
-- Column: `leatbirthandatage65byukla201517_2015-2017`
+- Column: `leatbirthandatage65byukla201517_2015\-2017`
 - Colour ramp: `Blues`
 - Mode: `Natural Breaks (Jenks)`
 - Press `OK`.
@@ -782,6 +763,7 @@ Select the following options:
 ![Styling our map](images/le-thematic-map-jenks.png)
 
 The resulting thematic map shows life expectancy at birth for females for all London Boroughs (except City of London).
+If your map is uniform and just shows the colour for missing check the order of the layers in the Layers panel; `Life expectancy` should be above `Missing` to ensure it renders on top of the missing values.
 
 ![Life expectancy at birth for females by London Borough](images/le-london-jenks.png)
 
