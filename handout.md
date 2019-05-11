@@ -893,13 +893,65 @@ https://www.getthedata.com/open-postcode-geo-api
 
 To use this you will need to work with `json` files which is beyond the scope of this course, but I recommend you get started with python's `json` library.
 
-Because of the size of the master csv file I have already downloaded it and processed it so it only contains the postcodes we need.
+Because of the size of the master csv file I have already downloaded and processed it so it only contains the postcodes we need.
 Download this file:
 
 ```
-
+https://raw.githubusercontent.com/philmikejones/beginning-mapping/master/src/postcode-geocoded.csv
 ```
 
+Open both the `postcode-geocoded.csv` and your CQC data.
+You may find it useful to split your view so that one file is open on either side of your monitor.
+We are going to perform a `vlookup` which is a process to load data from one source into another using a unique identifier (in this case the postcode).
+
+1. In the CQC file in the first row under easting type: `=vlookup(`
+1. Select the cell containing the postcode and press `,` (comma)
+1. In the `postcode-geocoded.csv` file select the whole table
+1. Back in the CQC data formula press `,`
+1. Press `2` (for the second column)
+1. Press `0`
+1. Finish the formula with a `)` (close bracket) and press Enter
+
+![vlookup formula](images/vlookup-formula.png)
+
+This should return a coordinate (in my case `179842`).
+Before we copy this formula we must tell Calc/Excel to look at a fixed table (i.e. as we copy the formula down the rows we do not want the reference table to change).
+Edit the `A2:C1583` and prefix the letters and numbers with `$` so that it reads:
+
+```
+$A$2:$C$1583
+```
+
+The whole formula should read (the path to your file location will differ):
+
+```
+=VLOOKUP(C2,'file:///home/phil/gits/beginning-mapping/data/postcode-geocoded.csv'#$'postcode-geocoded'.$A$2:$C$1584,2,0)
+```
+
+You can now fill this formula down for every easting coordinate.
+To obtain the northing coordinate copy the formula from the first row of the easting and paste into the northing column.
+We must now correct the following:
+
+- `D2` should be replaced with `C2`
+- `2` (the index) should be replaced with `3`
+
+The northing formula should look something like this:
+
+```
+=VLOOKUP(C2,'file:///home/phil/gits/beginning-mapping/data/postcode-geocoded.csv'#$'postcode-geocoded'.$A$2:$C$1584,3,0)
+```
+
+Fill this formula down to obtain all northing coordinates.
+The final step is to:
+
+1. Select the easting and northing columns
+1. Copy (`CTRL`/`CMD` + `C`)
+1. Edit > Paste Special > Paste Special (or `CTRL`/`CMD` + `Shift` + `V`)
+1. Ensure `Formulas` is not ticked
+1. Press `OK`
+1. If warned about pasting into cells with existing data select `Yes`
+
+This replaced the formulae with plain text for straightforward loading into QGIS.
 
 
 # Export the map
@@ -928,10 +980,12 @@ https://gis.stackexchange.com/
 
 This document contains data obtained and used under the terms of the Open Government License.
 
-*Contains National Statistics data © Crown copyright and database right [2019]
-    Contains OS data © Crown copyright [and database right] (2019)*
+Contains National Statistics data © Crown copyright and database right [2019]
+    Contains OS data © Crown copyright [and database right] (2019)
 
-*Contains Care Quality Commission data © Care Quality Commission (2019)*
+Contains Care Quality Commission data © Care Quality Commission (2019)
+
+Open Postcode Geo is derived from the ONS Postcode Directory which is licenced under the Open Government Licence and the Ordnance Survey OpenData Licence. You may use the additional fields provided by GetTheData without restriction.
 
 
 # References
