@@ -891,11 +891,10 @@ https://gridreferencefinder.com/postcodeBatchConverter/
 ```
 
 Under Step One paste your postcodes into the box (`CTRL`/`CMD` + `V`) and press `Convert Postcodes`.
-You can now select the geocoded data in Step Three and paste this straight back into your spreadsheet.
+You can then select and copy the completed geocoded postcodes in `Step Three` which you can paste straight back into your spreadsheet, appending to the end columns.
+Save and close your spreadsheet.
 
 ![Grid Reference Finder Batch Converter website](images/postcode-batch-converter-website.png)
-
-Save and close your spreadsheet.
 
 To load this data into QGIS open the Data Source Manager and select the 'Delimited Text' tab.
 Click the `...` button to select the file and choose the following options:
@@ -909,15 +908,22 @@ Check the preview and when you're satisfied press `Add`.
 The points should be automatically added to the plot.
 If they are not visible check that they are the top layer in the Layers panel so they are rendered on top of the background layers.
 
+![Import points with coordinates](images/import-points.png)
+
 We are going to replace the default symbol with the Staff Of Aesculapius to denote a medical provider.
 To style the points right--click on the points layer in the Layers panel, press `Properties` and select the `Symbology` tab.
-Select `Simple marker` and change the Symbol layer type to `SVG marker`.
-Under `SVG Groups` at the bottom select `health` and choose your preferred icon.
-You may also wish to increase the size from `2.0mm` to about `4.0mm`.
-Press `OK`.
 
-A quick comparison between the wealthy and deprived areas of London (with high and low life expectancy respectively) looks like there is a greater density of GP surgeries in wealthier areas.
-We could (and should) test this formally, but for now it's an interesting hypothesis made possible by spatial data.
+1. Select `Simple marker`
+1. Change the Symbol layer type to `SVG marker`
+1. Under `SVG Groups` at the bottom select `health` and choose your preferred icon.
+1. You may also wish to increase the size from `2.0mm` to about `4.0mm`.
+1. Press `OK`.
+
+A cursory comparison between the wealthy and deprived areas of London (with high and low life expectancy respectively) looks like there is a greater density of GP surgeries in wealthier areas.
+It is even possible to see Harley Street in the Westminster borough.
+We could (and should) test this formally as it might only be related to population, but for now it's an interesting hypothesis made possible by spatial data.
+
+![Our complete map with life expectancy by London borough and the location of GP practices](images/life-expectancy-gp-points-complete.png)
 
 
 # Export the map
