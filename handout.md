@@ -847,7 +847,7 @@ This is because we have the `zip` archive so if we make a mistake we can delete 
 
 Once you have the file imported we are going to delete rows we do not need to plot.
 Geocoding is an expensive operation (both in terms of time and, often, money if you need to pay for access to a geocoding service).
-Note the row numbers are approximate; the CQC data is updated regularly so the file you download may differ from the one I am demonstrating on here.
+Note the row numbers are approximate; the CQC data is updated regularly so the file you download may differ from the one I am demonstrating here.
 
 1. Sort the data on the `Service types` column (column G).
 1. Delete rows 2--13358 (Ambulances to Diagnosis/screening).
@@ -876,82 +876,45 @@ Optionally delete:
 1. N: CQC Location
 1. O: CQC Provider ID
 
-Create two new columns, one called '`easting`' (east--west) and one called '`norting`' (north--south).
-`GetTheData` host downloadable bulk csv files with coordinates for all postcodes in Great Britain (England, Scotland, and Wales).
-These are the most straightforward way to append coordinates to our file because we can simply filter only London postcodes, making the data much more manageable.
-You can download these files from:
+We are going to use the UK Grid Reference Finder postcode batch converter tool because it is free to use and presents the returned data in the easiest format.
+If you are going to GeoCode postcodes often you may wish to look into using an API such as that provided by:
 
 ```
-https://www.getthedata.com/open-postcode-geo
+https://postcodes.io/
 ```
 
-If you are going to perform more complicated geocoding tasks I strongly recommend you look into using the API:
+Select all the postcodes (use `CTRL` + `SHIFT` + arrow keys to select the column quickly) and copy these (`CTRL`/`CMD` + `C`).
+Open a web browser and navigate to:
 
 ```
-https://www.getthedata.com/open-postcode-geo-api
+https://gridreferencefinder.com/postcodeBatchConverter/
 ```
 
-To use this you will need to work with `json` files which is beyond the scope of this course, but I recommend you get started with python's `json` library.
+Under Step One paste your postcodes into the box (`CTRL`/`CMD` + `V`) and press `Convert Postcodes`.
+You can now select the geocoded data until Step Three and paste this straight back into your spreadsheet.
+Save and close your spreadsheet.
 
-Because of the size of the master csv file I have already downloaded and processed it so it only contains the postcodes we need.
-Download this file:
+To load this data into QGIS open the Data Source Manager and select the 'Delimited Text' tab.
+Click the `...` button to select the file and choose the following options:
 
-```
-https://raw.githubusercontent.com/philmikejones/beginning-mapping/master/src/postcode-geocoded.csv
-```
+- CSV (comma separated values)
+- Tick 'First record has field names'
+- Under Geometry Definition select `Point coordinates` and choose `X (easting)` and `Y (northing)` for X field and Y field respectively.
+- Geometry CRS: choose the Project CRS (`EPSG: 27700 - OSGB 1936 British National Grid`)
 
-Open both the `postcode-geocoded.csv` and your CQC data.
-You may find it useful to split your view so that one file is open on either side of your monitor.
-We are going to perform a `vlookup` which is a process to load data from one source into another using a unique identifier (in this case the postcode).
+Check the preview and when you're satisfied press `Add`.
+The points should be automatically added to the plot.
+If they are not visible check that they are the top layer in the Layers panel so they are rendered on top of the background layers.
 
-1. In the CQC file in the first row under easting type: `=vlookup(`
-1. Select the cell containing the postcode and press `,` (comma)
-1. In the `postcode-geocoded.csv` file select the whole table
-1. Back in the CQC data formula press `,`
-1. Press `2` (for the second column)
-1. Press `0`
-1. Finish the formula with a `)` (close bracket) and press Enter
+We are going to replace the default symbol with the Staff Of Aesculapius to denote a medical provider.
+To style the points right--click on the points layer in the Layers panel, press `Properties` and select the `Symbology` tab.
+Select `Simple marker` and change the Symbol layer type to `SVG marker`.
+Under `SVG Groups` at the bottom select `health` and choose your preferred icon.
+You may also wish to increase the size from `2.0mm` to about `4.0mm`.
+Press `OK`.
 
-![vlookup formula](images/vlookup-formula.png)
-
-This should return a coordinate (in my case `179842`).
-Before we copy this formula we must tell Calc/Excel to look at a fixed table (i.e. as we copy the formula down the rows we do not want the reference table to change).
-Edit the `A2:C1583` and prefix the letters and numbers with `$` so that it reads:
-
-```
-$A$2:$C$1583
-```
-
-The whole formula should read (the path to your file location will differ):
-
-```
-=VLOOKUP(C2,'file:///home/phil/gits/beginning-mapping/data/postcode-geocoded.csv'#$'postcode-geocoded'.$A$2:$C$1584,2,0)
-```
-
-You can now fill this formula down for every easting coordinate.
-To obtain the northing coordinate copy the formula from the first row of the easting and paste into the northing column.
-We must now correct the following:
-
-- `D2` should be replaced with `C2`
-- `2` (the index) should be replaced with `3`
-
-The northing formula should look something like this:
-
-```
-=VLOOKUP(C2,'file:///home/phil/gits/beginning-mapping/data/postcode-geocoded.csv'#$'postcode-geocoded'.$A$2:$C$1584,3,0)
-```
-
-Fill this formula down to obtain all northing coordinates.
-The final step is to:
-
-1. Select the easting and northing columns
-1. Copy (`CTRL`/`CMD` + `C`)
-1. Edit > Paste Special > Paste Special (or `CTRL`/`CMD` + `Shift` + `V`)
-1. Ensure `Formulas` is not ticked
-1. Press `OK`
-1. If warned about pasting into cells with existing data select `Yes`
-
-This replaced the formulae with plain text for straightforward loading into QGIS.
+A quick comparison between the wealthy and deprived areas of London (with high and low life expectancy respectively) looks like there is a greater density of GP surgeries in wealthier areas.
+We could (and should) test this formally, but for now it's an interesting hypothesis made possible by spatial data.
 
 
 # Export the map
