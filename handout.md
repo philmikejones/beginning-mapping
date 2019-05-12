@@ -891,7 +891,10 @@ https://gridreferencefinder.com/postcodeBatchConverter/
 ```
 
 Under Step One paste your postcodes into the box (`CTRL`/`CMD` + `V`) and press `Convert Postcodes`.
-You can now select the geocoded data until Step Three and paste this straight back into your spreadsheet.
+You can now select the geocoded data in Step Three and paste this straight back into your spreadsheet.
+
+![Grid Reference Finder Batch Converter website](images/postcode-batch-converter-website.png)
+
 Save and close your spreadsheet.
 
 To load this data into QGIS open the Data Source Manager and select the 'Delimited Text' tab.
@@ -949,6 +952,8 @@ Contains National Statistics data © Crown copyright and database right [2019]
 Contains Care Quality Commission data © Care Quality Commission (2019)
 
 Open Postcode Geo is derived from the ONS Postcode Directory which is licenced under the Open Government Licence and the Ordnance Survey OpenData Licence. You may use the additional fields provided by GetTheData without restriction.
+
+Thanks to Dr. Tom Broomhead for his technical review of this document.
 
 
 # References
