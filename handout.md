@@ -1,7 +1,7 @@
 ---
 title: Beginning mapping and spatial analysis for social researchers
 author: Dr. Phil Mike Jones
-date: "2019"
+date: "24 May 2019"
 titlepage: true
 toc: true
 toc-own-page: true
