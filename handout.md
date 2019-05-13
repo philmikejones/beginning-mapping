@@ -926,11 +926,123 @@ We could (and should) test this formally as it might only be related to populati
 ![Our complete map with life expectancy by London borough and the location of GP practices](images/life-expectancy-gp-points-complete.png)
 
 
+## Base map
+
+We can optionally add a basemap to our map.
+This is a layer that sits underneath the other layers with transparency and is useful to provide context for other readers of your map, particularly if they are not familiar with the area.
+It is not usual (or necessary) to provide a basemap for an area the size of London; at this scale we are not ordinarily interested in street--level information and readers will generally be more familiar with larger geographies such as a city, region, or country.
+It is much more common to provide a basemap for a smaller geography, such as an area within a city, because we may wish to interpret our map along with street--level information.
+For this example we are going to add a basemap to London overall, and you may wish to explore adding a basemap to a smaller area as an extra exercise.
+
+Begin by installing the `QuickMapServices` plugin by choosing the `Plugins` > `Manage and Install Plugins` menu and search for `quickmapservices`.
+
+![Install QuickMapServices](images/install-quickmapservices.png)
+
+Under `Web` > `QuickMapServices` there are options for different tile providers.
+I recommend an OSM basemap and especially the `OSM TF Transport Dark` can be an effective choice for basemaps, so select this.
+Drag this to the top in the Layers panel, or right--click it and press `Move to Top`.
+To make it transparent right--click it in the Layers panel and press `Properties` > `Transparency`.
+Values around 30--40% work well, so experiment until you are happy with the result and press `Apply`.
+We are not going to trim the basemap to the London administrative boundary layer, so select the `Symbology` tab and under `Blending Mode` choose `Overlay`.
+Press `OK`.
+
+![Map with basemap](images/map-complete-basemap.png)
+
+**Note:** Once you have added a basemap the 'Zoom Full' (`CTRL`/`CMD` + `Shift` + `F`) will now zoom to show the whole globe, regardless of whether you have any other area tiles loaded.
+To zoom to just London (or whatever boundaries you are working with) you must now right--click the layer in the Layers panel and choose `Zoom to Layer` (at the top).
+
+
 # Export the map
 
-# Analyse spatial data
+Now that we have our complete map we need to export it from QGIS to be able to use in reports, presentations, or web pages.
+The simplest way (but also the way with least control) is to use the `Project` > `Import/Export` > `Export Map to...` options.
+Images are useful for embedding in Microsoft Word documents or for use on web pages.
+PDFs are very useful for sharing as a stand--alone file, and are especially useful if you do not use a basemap and can be saved as a vector file (i.e. the map will scale infinitely large with no loss of detail).
+The steps for both are very similar, so let's export an image:
+
+1. Choose `Project` > `Import/Export` > `Export Map to Image`
+1. Set the extent if necessary by selecting `Calculate from Layer` > `Missing` (or `Life Expectancy`)
+1. For reports (Word document, etc.) or printing choose 300dpi; for web you can leave 96dpi
+1. Leave all other options as their defaults
+1. Press `Save` and save to a sensible location
+
+![Export as Image dialogue options](images/export-as-image.png)
+
+When we want more control we can use `Print Layout`.
+Select `Project` > `New Print Layout` (`CTRL`/`CMD` + `P`) and enter a title.
+I have called mine `a4-landscape` to reflect the dimensions of the exported image.
+Begin with `Add Item` > `Add Map` and draw a rectangle across the whole page.
+This should load a preview of your map.
+
+**Note:** if the map preview does not fill the layout adequately adjust the view in the main QGIS window.
+It can also be beneficial to adjust the width of the sidebar to more closely crop to the width of the map.
+
+Now add a legend with `Add Item` > `Add Legend` and click approximately where you would like the legend to be displayed.
+We do not need some of the layers and we want to label some of the items more descriptively, so:
+
+1. Under the `Item Properties` tab > `Legend Items` untick `Auto update`
+1. Click `OSM TF Transport Dark` and press remove (red `-` (minus))
+1. Click `08_May_2019_CQC_directory` (or similar) and press Edit (the icon of the notepad), and change the item text to `GP surgery`
+1. Click `leatbirthandatage65byukla201517` and remove
+
+Your legend should now be much more informative.
+We can also add any arbitrary text (or even html) to the figure, so let's add a title.
+
+1. `Add Item` > `Add Label`
+1. Click approximately where you would like the label to appear (you can move it later)
+1. Under the sidebar > `Item Properties` tab > `Main Properties` change the 'Lorum ipsum' placeholder text to your title
+1. Change this to: 'Female life expectancy by London borough, 2015-2017'
+1. Under `Appearance` change the font and font size as you wish. I prefer a serif font at about size 14 for a title.
+
+![Map completed in Print Layout](images/map-print-layout.png)
+
+You can add other items to the map, and I suggest you spend some time testing out what you might wish to add.
+A word on scale bars and compass/north arrows: you need neither.
+For a map of an area like London or a country that your readers are likely to be familiar with, a scale bar is optional and often just adds clutter.
+You may wish to add a scale bar for smaller geographies (perhaps a single borough within London) as this might add useful context.
+Generally your maps will face north to the top so a compass/north arrow is superfluous; you should add one if your map does not face north and the implied north is not obvious (Figure \ref{house-price-3d} does not include a north arrow because this is easily recognisable).
+
+Now to export the map.
+If your map includes transparency (as ours does) we must export as a raster.
+If it does not include transparency (or other non--scalable features) we can export as a vector, which is often superior.
+For an elegant discussion of the differences between raster and vector see:
+
+```
+https://vector-conversions.com/vectorizing/raster_vs_vector.html
+```
+
+For now under the Print Layout sidebar > `Layout` tab > `Export Settings` and tick `Print as raster`.
+Choose 300dpi for print and 96dpi for screen use.
+Now under the `Layout` menu you can choose to export as image, pdf, or svg.
+Congratulations, you've completed all the exercises!
+
+
+# What next?
+
+There is only so much it's possible to learn on a one day course, so this is very much an introduction to some of the fundamental features of GIS.
+Now you can think about analysing and interpreting your map, or use the map interactively to explore different areas of London.
+You could answer the following questions:
+
+- Is there a greater density of GP practices in areas with high life expectancy?
+- What other factors affect GP practice density (e.g. population density)?
+- Are there any outliers (high life expectancy but low density, or vice versa)?
+- What other information would you like to have to assess this in more detail? Perhaps number of patients, number of complex needs patients, number of doctors, CQC rating, etc.?
+
+If you have some time left you are welcome to use the time to:
+
+- Explore some of the more advanced QGIS options available in the GRASS toolbox
+- Try to map some of your own data for an administrative area of your choice
+- Render a 3d map (hint: look in the plugins menu)
+- Try to produce a cartogram (a cartogram *must* be scaled with count data; this life expectancy data is not suitable)
+
 
 # Where to get help
+
+### From your instructor
+
+The best way to contact me is often through twitter: `@philmikejones`
+
+If you have a GIS question that is not answered on GIS StackExchange (see below), ask the question and share the link with me via twitter (preferred) or email: `philmikejones@gmail.com`
 
 ### QGIS Uncovered
 
@@ -942,6 +1054,10 @@ https://www.youtube.com/playlist?list=PL7HotvlLKHCs9nD1fFUjSOsZrsnctyV2R
 ```
 
 ### GIS StackExchange
+
+A community Q&A for GIS.
+Always search to see if there is an answer to your question first, then ask if necessary.
+Share the link with me on twitter (`@philmikejones`) if you'd like me to try to answer it.
 
 ```
 https://gis.stackexchange.com/
@@ -1007,8 +1123,23 @@ http://spatialreference.org/ref/epsg/
 https://thetruesize.com
 ```
 
+### Geocoding
+
+```
+https://postcodes.io/
+```
+
 ### Styles
 
 ```
 http://colorbrewer2.org/
+```
+
+
+## Gallery
+
+### Cartograms
+
+```
+https://worldmapper.org/
 ```
