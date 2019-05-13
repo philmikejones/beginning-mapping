@@ -13,10 +13,17 @@ These are details for the following course:
 - Instructor: Phil Jones
 - 24 May 2019
 - National Council for Voluntary Organisations, Society Building, 8 All Saints Street, London, N1 9RL
+- Map:
 
-```
+```html
 https://www.google.com/maps/place/National+Council+For+Voluntary+Organisations/@51.5345897,-0.1195562,17.75z/data=!4m5!3m4!1s0x0:0xb81a1dfab441707e!8m2!3d51.5347849!4d-0.1182627?hl=en-GB
 ```
+
+
+# Equipment
+
+You will need your laptop to work through the exercises on the day.
+If you have one, a mouse will be helpful.
 
 
 # Software
@@ -24,11 +31,21 @@ https://www.google.com/maps/place/National+Council+For+Voluntary+Organisations/@
 Before the course please download the latest Long Term Release of QGIS, verion 3.4 'Madeira' for your platform.
 This can be obtained from:
 
-```
+```html
 https://www.qgis.org/en/site/forusers/download.html
 ```
 
-If you cannot get it working on your device for whatever reason, download the `.exe` of `.dmg` for your system and I can help you on the day.
+You will also need a spreadsheet programme.
+Microsoft Excel will be fine.
+If you do not have a copy of this you can download LibreOffice for free from:
+
+```html
+https://www.libreoffice.org/download/download/
+```
+
+I recommend the long--term support version (currently 6.1), but either will be fine.
+
+If you cannot get either software working on your device for whatever reason, download the `.exe` of `.dmg` for your system and I can help you on the day.
 
 
 # Data
