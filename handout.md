@@ -1085,7 +1085,7 @@ Contains National Statistics data © Crown copyright and database right [2019]
 
 Contains Care Quality Commission data © Care Quality Commission (2019)
 
-Open Postcode Geo is derived from the ONS Postcode Directory which is licenced under the Open Government Licence and the Ordnance Survey OpenData Licence. You may use the additional fields provided by GetTheData without restriction.
+Uses geocoded data from `https://gridreferencefinder.com/postcodeBatchConverter/` © 2014 UK Grid Reference Finder.
 
 Thanks to Dr. Tom Broomhead for his technical review of this document.
 
