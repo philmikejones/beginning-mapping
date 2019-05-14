@@ -84,7 +84,7 @@ Either Excel or Calc will be more than adequate for our needs on the course.
 
 You can download QGIS from:
 
-```
+```html
 https://qgis.org/en/site/forusers/download.html
 ```
 
@@ -94,7 +94,7 @@ I strongly recommend you download the long--term release version (currently 3.4)
 
 You can download LibreOffice from:
 
-```
+```html
 https://www.libreoffice.org/download/download/
 ```
 
@@ -194,7 +194,7 @@ You can see the full list in the [References][] section.
 
 For these exercises we will download our boundary data from:
 
-```
+```html
 https://census.ukdataservice.ac.uk/get-data/boundary-data.aspx
 ```
 
@@ -210,7 +210,7 @@ We will use the `Easy Download` service to download the regions of England, Scot
 
 Download and unzip the following files if you have not already downloaded the data archive:
 
-```
+```html
 https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_gor_2011.zip
 https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/Scotland_ol_1991.zip
 https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/Wales_ol_2011.zip
@@ -241,7 +241,7 @@ See Figure \ref{qgis-grass-v-generalize} for where to find this tool.
 
 If you need to install GRASS you can obtain this from:
 
-```
+```html
 https://grass.osgeo.org/download/
 ```
 
@@ -259,7 +259,7 @@ A coordinate reference system specifies:
 A projection describes how the three--dimensional surface of the Earth is distorted to fit a two--dimensional map, either on the screen or in print.
 You can explore the size of the distortions of the Mercator projection using
 
-```
+```html
 https://thetruesize.com
 ```
 
@@ -270,7 +270,7 @@ Often the data you download will have a CRS/projection bundled with it and when 
 For example, the English regions zip file contained a `.prj` file which QGIS uses to apply the correct CRS to the file as it is loaded.
 You can open these `.prj` files with any text editor and the contents looks something like this:
 
-```
+```wkt
 PROJCS["OSGB_1936_British_National_Grid",GEOGCS["GCS_OSGB 1936",DATUM["D_OSGB_1936",SPHEROID["Airy_1830",6377563.396,299.3249646]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",49],PARAMETER["central_meridian",-2],PARAMETER["scale_factor",0.9996012717],PARAMETER["false_easting",400000],PARAMETER["false_northing",-100000],UNIT["Meter",1]]
 ```
 
@@ -288,7 +288,7 @@ If you are using UK data from sources such as the OS the CRS is almost certainly
 The CRS is specified using a unique code called an EPSG code.
 A full list of all EPSG codes can be obtained from:
 
-```
+```html
 http://spatialreference.org/ref/epsg/
 ```
 
@@ -327,6 +327,7 @@ To save press the 'Save Project' icon, or use the keyboard shortcut `CTRL` + `S`
 ![Save project](images/save-project.png)
 
 I've saved my project as 'regions' in the `regions/` directory along with my shapefiles.
+Remember to save regularly as you progress.
 
 ![Save project dialogue](images/save-project-dialogue.png)
 
@@ -355,7 +356,7 @@ Instead of downloading a file to your system locally, these formats work by conn
 Performing these steps is beyond the scope of this one--day course, but it is quite straightforward.
 If you wish to explore this the following link to the QGIS documentation will get you started (documentation for version 3.x of QGIS is still a work--in--progress so this page is written for version 2.18 of QGIS which is now out of date, but the steps are largely the same):
 
-```
+```html
 https://docs.qgis.org/2.18/en/docs/user_manual/working_with_ogc/ogc_client_support.html
 ```
 
@@ -369,7 +370,7 @@ For example, you may wish to plot just one region or local authority.
 It is sometimes possible to download just the boundaries we need.
 For example the Boundary Data Selector
 
-```
+```html
 https://borders.ukdataservice.ac.uk/bds.html
 ```
 
@@ -514,9 +515,9 @@ We will achieve this by downloading the local authority districts (LADs) in Grea
 Next we will select just the Greater London region using the 'Select by Expression' approach above.
 We will then clip the LADs layer to the Greater London region.
 
-If you do not already have the local authority districts (LADs) file from the zip file download it from the following URL:
+Download the local authority districts (LADs) file from the following URL:
 
-```
+```html
 https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/England_lad_2011.zip
 ```
 
@@ -568,9 +569,9 @@ One strategy is to transform one of the layers, permanently changing the coordin
 The other strategy is to reproject the layer(s) on--the--fly so the reprojection is temporary.
 I find transforming is useful if I know I need to use the layer multiple times or perform analyses with it; temporarily reprojecting the layer(s) is useful for quickly exploring the layer and comparing with other sources.
 
-Download the Greater London OSM shapefile from `geofabrik` (if you haven't already downloaded the full zip file):
+Download the Greater London OSM shapefile from `geofabrik`:
 
-```
+```html
 http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip
 ```
 
@@ -639,7 +640,7 @@ Begin by downloading *Life expectancy at birth and at age 65 years by local area
 
 [^lifeexpect]: http://bit.ly/2ZOzwpf
 
-```
+```html
 https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/lifeexpectancyatbirthandatage65bylocalareasuk/current/leatbirthandatage65byukla201517.xls
 ```
 
@@ -799,7 +800,7 @@ You can then drag and reposition the thresholds to fit your requirements.
 
 `GIS Geography` offer an accessible article discussing the uses of the different classification methods:
 
-```
+```html
 https://gisgeography.com/choropleth-maps-data-classification/
 ```
 
@@ -809,7 +810,7 @@ https://gisgeography.com/choropleth-maps-data-classification/
 Colour is one of the main ways you will denote thematic aggregate data on a choropleth map (height, or `z`--index being the other main option).
 QGIS has lots of colour palettes, and an absolutely fantastic resource if you need more palettes is:
 
-```
+```html
 http://colorbrewer2.org/
 ```
 
@@ -829,7 +830,7 @@ Avoid using red and green in the same map or viewers with red--green colour blin
 Having looked at aggregate data and produced a choropleth map, we are now going to add some point data.
 Download the Care Quality Commission (CQC) care directory and unzip it:
 
-```
+```html
 https://www.cqc.org.uk/sites/default/files/08_May_2019_CQC_directory.zip
 ```
 
@@ -879,14 +880,14 @@ Optionally delete:
 We are going to use the UK Grid Reference Finder postcode batch converter tool because it is free to use and presents the returned data in the easiest format.
 If you are going to GeoCode postcodes often you may wish to look into using an API such as that provided by:
 
-```
+```html
 https://postcodes.io/
 ```
 
 Select all the postcodes (use `CTRL` + `SHIFT` + arrow keys to select the column quickly) and copy these (`CTRL`/`CMD` + `C`).
 Open a web browser and navigate to:
 
-```
+```html
 https://gridreferencefinder.com/postcodeBatchConverter/
 ```
 
@@ -1007,7 +1008,7 @@ If your map includes transparency (as ours does) we must export as a raster.
 If it does not include transparency (or other non--scalable features) we can export as a vector, which is often superior.
 For an elegant discussion of the differences between raster and vector see:
 
-```
+```html
 https://vector-conversions.com/vectorizing/raster_vs_vector.html
 ```
 
@@ -1027,6 +1028,9 @@ You could answer the following questions:
 - What other factors affect GP practice density (e.g. population density)?
 - Are there any outliers (high life expectancy but low density, or vice versa)?
 - What other information would you like to have to assess this in more detail? Perhaps number of patients, number of complex needs patients, number of doctors, CQC rating, etc.?
+- What other variables or data would you like to compare life expectancy with? Infant mortality? Obesity prevalence? Air quality? Cake consumption?[^cake] Anything else?
+
+[^cake]: I have plotted cake consumption based on simulated data from the Adult Dental Health Survey.
 
 If you have some time left you are welcome to use the time to:
 
@@ -1034,6 +1038,8 @@ If you have some time left you are welcome to use the time to:
 - Try to map some of your own data for an administrative area of your choice
 - Render a 3d map (hint: look in the plugins menu)
 - Try to produce a cartogram (a cartogram *must* be scaled with count data; this life expectancy data is not suitable)
+
+Feel free to ask for help.
 
 
 # Where to get help
@@ -1049,7 +1055,7 @@ If you have a GIS question that is not answered on GIS StackExchange (see below)
 Steven Bernard has produced a series of excellent tutorial videos for QGIS.
 They were recorded with QGIS 2 but many of the steps and procedures are the same or very similar with QGIS 3, so this is still a very useful resource:
 
-```
+```html
 https://www.youtube.com/playlist?list=PL7HotvlLKHCs9nD1fFUjSOsZrsnctyV2R
 ```
 
@@ -1059,7 +1065,7 @@ A community Q&A for GIS.
 Always search to see if there is an answer to your question first, then ask if necessary.
 Share the link with me on twitter (`@philmikejones`) if you'd like me to try to answer it.
 
-```
+```html
 https://gis.stackexchange.com/
 ```
 
@@ -1085,7 +1091,7 @@ Thanks to Dr. Tom Broomhead for his technical review of this document.
 
 ### UK
 
-```
+```html
 https://census.ukdataservice.ac.uk/get-data/boundary-data.aspx
 http://geoportal.statistics.gov.uk/
 https://www.ordnancesurvey.co.uk/business-and-government/products/finder.html?Licensed%20for=OpenData%20(Free)
@@ -1094,9 +1100,7 @@ http://casweb.ukdataservice.ac.uk/
 
 ### World
 
-StatSilk (https://www.statsilk.com/maps/download-free-shapefile-maps) also maintain a list of up--to--date sources of shapefiles.
-
-```
+```html
 https://data.humdata.org/search?ext_geodata=1
 http://download.geofabrik.de/
 http://www.diva-gis.org/Data
@@ -1104,42 +1108,61 @@ https://gadm.org/data.html
 https://www.naturalearthdata.com/downloads/
 ```
 
+StatSilk (https://www.statsilk.com/maps/download-free-shapefile-maps) also maintain a list of up--to--date sources of shapefiles.
+
+
 ### Programming and interactive
 
-```
+```html
 https://developers.google.com/maps/documentation/
 https://wiki.openstreetmap.org/wiki/Overpass_API
 ```
 
+If you wish to use R or python for your GIS I strongly recommend the following packages:
+
+- `sf` (R)
+- `geopandas` (python)
+
+
 ### EPSG codes
 
-```
+```html
 http://spatialreference.org/ref/epsg/
 ```
 
 ### Projections
 
-```
+```html
 https://thetruesize.com
 ```
 
 ### Geocoding
 
-```
+```html
 https://postcodes.io/
 ```
 
 ### Styles
 
-```
+```html
 http://colorbrewer2.org/
 ```
+
+I'm not a designer so I found this book very helpful:
+
+Peterson, Gretchen N. (2012) *Cartographer's Toolkit: Colors, Typography, Patterns*. PetersonGIS: Fort Collins, CO. Available from: https://amzn.to/2YsKGic
 
 
 ## Gallery
 
 ### Cartograms
 
-```
+```html
 https://worldmapper.org/
+```
+
+### 3D visualisation
+
+```html
+https://philmikejones.github.io/datavis3d/
 ```
