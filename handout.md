@@ -37,12 +37,12 @@ At the end of the day there will be time to try mapping your own data, if you wi
 My name is Phil, and I am your instructor on this course.
 
 I have a PhD in geography from the University of Sheffield.
-I specialise in computer simulations of small--area geographical data, but undertake all types of GIS and geographical analysis.
+I specialise in computer simulations of small--area geographical data, but undertake most types of GIS and geographical analysis.
 
 I now work at the University of Derby on an ESRC--funded research project.
 For over ten years I have worked in both private and public--sector organisations as a data analyst.
 
-I write blog posts and post tutorials about GIS on my website, which is <https://philmikejones.me>.
+I write blog posts and post tutorials about GIS on my website, which is `https://philmikejones.me`.
 I enjoy teaching and have taught variations of much of this material to postgraduate level.
 
 I hope you enjoy your course and come away with the skills and confidence to produce your own maps for spatial analysis; the world needs more geographers!
@@ -98,8 +98,7 @@ You can download LibreOffice from:
 https://www.libreoffice.org/download/download/
 ```
 
-Either version is fine, but if you are in any doubt choose the lower version number, currently 6.1.5.
-
+Either version is fine, but if you are in any doubt choose the lower version number, currently 6.1.
 Don't worry if you don't manage to install these; I can help you on the day if necessary.
 
 <!--TODO Add link to data download zip-->
@@ -152,7 +151,7 @@ Change the default CRS by opening the `Settings` > `Options` menu if it's not st
 
 ![QGIS CRS options](images/qgis-crs-options.png)
 
-By `Default CRS for new projects` click `Select CRS` (the little globe to the right).
+By 'Default CRS for new projects' click `Select CRS` (the little globe to the right).
 Then type `27700` (the code for British National Grid) and select it and press ok.
 
 ![QGIS CRS Selector](images/qgis-crs-selector.png)
@@ -301,7 +300,7 @@ The EPSG codes for the two most common CRSs you will use (at least in the UK) ar
 ## Opening spatial data in QGIS
 
 From the QGIS window (Figure \ref{qgis-interface}) use the browser in the left sidebar to navigate to your project folder.
-In this folder select the file(s) that you want to open (you can hold Ctrl/Cmd and click to select multiple files) then press `Add selected layers`, or drag these into the `Layers` panel.
+In this folder select the file(s) that you want to open (you can hold `Ctrl`/`Cmd` and click to select multiple files) then press `Add selected layers`, or drag these into the `Layers` panel.
 
 Select the following files and add them as layers:
 
