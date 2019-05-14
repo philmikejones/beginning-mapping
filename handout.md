@@ -773,6 +773,9 @@ The lowest life expectancies are in: Hackney; Tower Hamlets; Newham; Greenwich; 
 We'll get into analysis later, but if you're at all familiar with London you will no doubt notice a pattern to these.
 
 Congratulations on producing your first thematic map!
+At this point take a few moments to think about what other variables or data you would like to analyse life expectancy with? Infant mortality? Obesity prevalence? Air quality? Cake consumption?[^cake] Anything else?
+
+[^cake]: I have plotted cake consumption based on simulated data from the Adult Dental Health Survey.
 
 
 ## Breaks
@@ -1033,9 +1036,6 @@ You could answer the following questions:
 - What other factors affect GP practice density (e.g. population density)? How would you test this?
 - Are there any outliers (high life expectancy but low density, or vice versa)?
 - What other information would you like to have to assess this in more detail? Perhaps number of patients, number of complex needs patients, number of doctors, CQC rating, etc.?
-- What other variables or data would you like to compare life expectancy with? Infant mortality? Obesity prevalence? Air quality? Cake consumption?[^cake] Anything else?
-
-[^cake]: I have plotted cake consumption based on simulated data from the Adult Dental Health Survey.
 
 If you have some time left you are welcome to use the time to:
 
