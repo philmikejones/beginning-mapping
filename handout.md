@@ -623,7 +623,7 @@ Both of these examples are aggregated from the individual people in that area; w
 Figure \ref{house-price-3d} shows the mean house price by local authority district (LAD).
 Here the price of each property sale is the unit of observation.
 
-Using the Boroughs (LADs) of London we clipped in the previous section we are going to produce a thematic map of
+Using the Boroughs (LADs) of London we clipped in the previous section we are going to produce a thematic map of life expectancy.
 There are three stages to each aggregate thematic map:
 
 1. Load the desired spatial data (we have done this)
