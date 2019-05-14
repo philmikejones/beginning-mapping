@@ -788,7 +788,7 @@ The options when classifying data are:
 - `Quantile (Equal Count)` splits the data so that there are an equal number of cases in each interval, creates ranked data.
 - `Natural Breaks (Jenks)` splits the data statistically to maximise the difference between groups and minimise the difference within groups. Usually a good starting point.
 - `Standard Deviation`, useful for seeing how much values deviate below or above the mean. Income is a common example.
-- `Pretty Breaks`, generally not recommended.
+- `Pretty Breaks`, generally not recommended for exploratory analysis.
 - `Manual`, for greatest control.
 
 The `Histogram` tab can be used to create and tweak manual breaks in the data.
@@ -853,7 +853,7 @@ This is because we have the `zip` archive so if we make a mistake we can delete 
 
 Once you have the file imported we are going to delete rows we do not need to plot.
 Geocoding is an expensive operation (both in terms of time and, often, money if you need to pay for access to a geocoding service).
-Note the row numbers are approximate; the CQC data is updated regularly so the file you download may differ from the one I am demonstrating here.
+Note the row numbers are approximate; the CQC data is updated regularly so the file you download may differ slightly from the one I am demonstrating here.
 
 1. Sort the data on the `Service types` column (column G).
 1. Delete rows 2--13358 (Ambulances to Diagnosis/screening).
@@ -949,13 +949,13 @@ I recommend an OSM basemap and especially the `OSM TF Transport Dark` can be an 
 Drag this to the top in the Layers panel, or right--click it and press `Move to Top`.
 To make it transparent right--click it in the Layers panel and press `Properties` > `Transparency`.
 Values around 30--40% work well, so experiment until you are happy with the result and press `Apply`.
-We are not going to trim the basemap to the London administrative boundary layer, so select the `Symbology` tab and under `Blending Mode` choose `Overlay`.
+We are now going to trim the basemap to the London administrative boundary layer, so select the `Symbology` tab and under `Blending Mode` choose `Overlay`.
 Press `OK`.
 
 ![Map with basemap](images/map-complete-basemap.png)
 
 **Note:** Once you have added a basemap the 'Zoom Full' (`CTRL`/`CMD` + `Shift` + `F`) will now zoom to show the whole globe, regardless of whether you have any other area tiles loaded.
-To zoom to just London (or whatever boundaries you are working with) you must now right--click the layer in the Layers panel and choose `Zoom to Layer` (at the top).
+To zoom to just London (or whatever boundaries you are working with) you must instead right--click the layer in the Layers panel and choose `Zoom to Layer` (at the top).
 
 
 # Export the map
@@ -1030,7 +1030,7 @@ Now you can think about analysing and interpreting your map, or use the map inte
 You could answer the following questions:
 
 - Is there a greater density of GP practices in areas with high life expectancy?
-- What other factors affect GP practice density (e.g. population density)?
+- What other factors affect GP practice density (e.g. population density)? How would you test this?
 - Are there any outliers (high life expectancy but low density, or vice versa)?
 - What other information would you like to have to assess this in more detail? Perhaps number of patients, number of complex needs patients, number of doctors, CQC rating, etc.?
 - What other variables or data would you like to compare life expectancy with? Infant mortality? Obesity prevalence? Air quality? Cake consumption?[^cake] Anything else?
