@@ -11,7 +11,7 @@ logo-width: 500
 
 # Introduction
 
-Welcome to beginning mapping and spatial analysis for social researchers course.
+Welcome to the beginning mapping and spatial analysis for social researchers course.
 This one--day course is being run on behalf of the Social Research Association.
 This course contributes 6 hours to the MRS CPD programme.
 
@@ -344,14 +344,14 @@ You might see other file formats including:
 XML (i.e. KML) is a more verbose file format than (Geo)JSON, so I recommend you download GeoJSON when given a choice.
 Open these in QGIS in exactly the same way as we opened the shapefile earlier, or simply drag and drop the layer in to QGIS from your file browser.
 
-In addition to file formats you may also see OGC data services and database formats listed, such as:
+In addition to file formats you may also see OGC (Open Geospatial Consortium) data services and database formats listed, such as:
 
 - WMS
 - WCS
 - WFS
 - PostGIS
 
-Instead of downloading a file to your system locally, these formats work by connecting to the database from from within QGIS and using QGIS as a browser to obtain the boundary extent you require.
+Instead of downloading a file to your system locally, these formats work by connecting to the database from within QGIS and using QGIS as a browser to obtain the boundary extent you require.
 Performing these steps is beyond the scope of this one--day course, but it is quite straightforward.
 If you wish to explore this the following link to the QGIS documentation will get you started (documentation for version 3.x of QGIS is still a work--in--progress so this page is written for version 2.18 of QGIS which is now out of date, but the steps are largely the same):
 
@@ -574,7 +574,7 @@ Download the Greater London OSM shapefile from `geofabrik`:
 http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip
 ```
 
-Unzip the file to your working directory, and add the `gis_osm_water_a_free_1` layer:
+Unzip the file to your working directory, and add the `gis_osm_water_a_free_1` layer (you may need to refresh your file browser or locate the `.shp` manually):
 
 ![London waterways](images/london-waterways.png)
 
@@ -715,7 +715,7 @@ Sometimes, though, your data may only contain names which do not always match pr
 To do any join it is your job to ensure the zone identifier in your geometry file match the zone identifier in your thematic data.
 For this example we will use a unique area code.
 
-Begin by highlighting (single--click) the spatial layer.
+Begin by highlighting (single--click) the London boroughs spatial layer.
 Right--click the layer and press `Properties` and select the `Joins` tab.
 Press `Add` (the green `+`) then:
 
