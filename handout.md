@@ -385,7 +385,7 @@ Untick Scotland (`scotland_ol_1991`) and Wales (`wales_ol_2011`), leaving just E
 Before modifying your shapefiles in any way it is a good idea to create a backup copy first.
 I recommend you get into the habit of making a backup copy before making any *destructive changes* to your input files in case you can't recover the original.
 
-With the shapefile specification there are a number of files associated with the geometry that we need to copy, from a minimum of three to potentially more than ten (see https://en.wikipedia.org/wiki/Shapefile).
+With the shapefile specification there are a number of files associated with the geometry that we need to copy, from a minimum of three to potentially more than ten (see `https://en.wikipedia.org/wiki/Shapefile`).
 I therefore recommend saving a new copy with QGIS, which manages all the associated files automatically.
 To do this simply right--click on the layer you want to copy, then select `Export` then `Save Features As`.
 
@@ -410,7 +410,7 @@ Save your project (`CTRL`/`Cmd` + `S`).
 
 ![Select Feature(s) tool](images/select-features.png)
 
-The easiest way to select individual or groups of polygons is using the GUI (graphical user interface).
+Often the easiest way to select individual or groups of polygons is using the GUI (graphical user interface).
 Use the 'Select Feature(s)' tool (the icon is along the top).
 
 ![Open Attribute Table](images/open-attribute-table-icon.png)
@@ -460,7 +460,7 @@ Here we will select which area(s) to retain and show.
 We can filter on any attribute in the file's attribute table, such as code or name, but here we will use name.
 
 Double--click `name` to see it copied into the 'Provider specific filter expression' at the bottom.
-Now press or type `=`.
+Now press or type `=` (equals).
 Finally under 'Values' on the right press 'All' to list all unique region names.
 Double--click 'London' so your filter expression should look like the following:
 
@@ -511,7 +511,7 @@ The last approach we'll use to modify a layer is called a spatial clip.
 This uses a larger polygon to specify the extent of the smaller polygons we want to keep.
 For example, we might want to keep (clip) all the boroughs in the Greater London region.
 We will achieve this by downloading the local authority districts (LADs) in Great Britain; these include the London Boroughs.
-Next we will select just the Greater London region using the 'Select by Expression' approach above.
+Next we will select just the Greater London region using the one of the techniques we have already used above.
 We will then clip the LADs layer to the Greater London region.
 
 Download the local authority districts (LADs) file from the following URL:
@@ -521,14 +521,19 @@ https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/Engla
 ```
 
 I suggest making a new project.
-Start by creating a new directory (I've called mine `lad` for 'Local Authority District') and open QGIS.
-Add `england_gor_2011` from the previous project (`regions`) and save a duplicate as we did in the 'Create a backup copy' section, making sure to save it into the new project ('lad').
+Start by creating a new directory (I've called mine `lad` for 'Local Authority District') and begin a new project in QGIS.
+Add `england_gor_2011` from the previous project (`regions`) and save a duplicate as we did in the 'Create a backup copy' section, making sure to save it into the new project folder (`lad/`).
 Load `england_gor_2011_edit` (or whatever you called the copy you just made) and `England_lad_2011` into your layers panel, and you should have something that looks like this:
 
 ![Regions and LAD layers ready for clipping](images/clip-exercise-layers.png)
 
 Select (click) on the `england_gor_2011_edit` layer.
-Right--click and press 'Filter' as we did before, and enter `"name" = 'London'` in the expression.
+Right--click and press 'Filter' as we did before, and enter the following in the expression:
+
+```python
+"name" = 'London'
+```
+
 When you `Test` this it should return 1 row.
 Press 'Ok'.
 
@@ -550,13 +555,14 @@ The only time it might be worth specifying a filename in advance is if you're cl
 
 Press 'Run'.
 You should be left with 33 London Boroughs that match the London region outline.
+You can untick the regions and original LAD files and zoom to the extent of the newly--clipped London boroughs.
 
 ![London Boroughs](images/clip-result.png)
 
 
 We have used three different ways (and even combined two) to select boundaries with QGIS.
 It is often the case that if you are using different layers from the same source the boundaries match and you can use clips (as we did with two layers from one source).
-In the wild, especially if using layers from different sources, it is necessary to use the GUI or filter by expression tools (or a combination of both) to select the layers you need.
+In the wild, especially if using layers from different sources, it is often necessary to use the GUI or filter by expression tools (or a combination of both) to select the layers you need.
 
 
 ## Converting between projections/CRS
@@ -582,8 +588,9 @@ This file uses a different CRS than the London shapefile (specifically it uses W
 It is, however, projected in the same CRS as the original London layer:
 Notice in the bottom right the project CRS still shows `27700`.
 This has been reprojected on--the--fly to match the existing layer, so the two layers plot together correctly.
-If they didn't, the Thames would not show up anywhere near London (to see what I mean open the project CRS and select 'No projection (or unknown/non--Earth projection)').
 If this doesn't happen automatically (typically because you haven't selected a default CRS), click the project CRS button in the bottom right and select the project CRS you want to use.
+If the file was not reprojected the Thames would not show up anywhere near London (to see what I mean open the project CRS and select 'No projection (or unknown/non--Earth projection)').
+
 
 ![London waterways layer CRS is WGS84/EPSG: 4326](images/london-waterways-crs.png)
 
@@ -619,7 +626,7 @@ For example we could plot the mean life expectancy of females and/or males born 
 Just as when we are summarising non--spatial data, it is important to think about the most appropriate way to share our data.
 It might be appropriate to plot the mean number of females in each area (instead of the total), but it would be odd to plot the total life expectancy of all females.
 
-Both of these examples are aggregated from the individual people in that area; we could just as easily aggregate observations of other subjects.
+Both of theese examples (mean life expectancy of females; total number of females) are aggregated from the individual people in that area; we could just as easily aggregate observations of other subjects.
 Figure \ref{house-price-3d} shows the mean house price by local authority district (LAD).
 Here the price of each property sale is the unit of observation.
 
@@ -773,7 +780,7 @@ The lowest life expectancies are in: Hackney; Tower Hamlets; Newham; Greenwich; 
 We'll get into analysis later, but if you're at all familiar with London you will no doubt notice a pattern to these.
 
 Congratulations on producing your first thematic map!
-At this point take a few moments to think about what other variables or data you would like to analyse life expectancy with? Infant mortality? Obesity prevalence? Air quality? Cake consumption?[^cake] Anything else?
+At this point take a few moments to think about what other variables or data it would be useful to compare with life expectancy. Infant mortality? Obesity prevalence? Air quality? Cake consumption?[^cake] Anything else?
 
 [^cake]: I have plotted cake consumption based on simulated data from the Adult Dental Health Survey.
 
@@ -783,7 +790,7 @@ At this point take a few moments to think about what other variables or data you
 When mapping life expectancy above I simply instructed you to use `Natural Breaks (Jenks)`, but choosing (and styling) breaks is so important that I want to spend some time discussing this properly now.
 Just as when we are presenting non--spatial data it is essential to think about how we present that data, particularly when we group data into categories (or 'cut' it) which is typically necessary when presenting spatial data[^alternatives-to-cut].
 
-[^alternatives-to-cut]: There are alternatives to cutting or grouping the data, including using a smooth continuous gradient and plotting a 3D image and using the z--axis to denote the theme, but cutting the data is the most common approach and the one we will use here.
+[^alternatives-to-cut]: There are alternatives to cutting or grouping the data, including using a smooth continuous gradient and plotting a 3D image and using the z--axis to denote the theme, but cutting the data is the most common approach.
 
 The options when classifying data are:
 
@@ -795,7 +802,7 @@ The options when classifying data are:
 - `Manual`, for greatest control.
 
 The `Histogram` tab can be used to create and tweak manual breaks in the data.
-Begin by pressing `Load Values` and select the number of bins you would like, and add the mean and standard deviation if you would life.
+Begin by pressing `Load Values` and select the number of bins you would like, and add the mean and standard deviation if you wish.
 You can then drag and reposition the thresholds to fit your requirements.
 
 ![Histogram](images/histogram.png)
@@ -809,7 +816,7 @@ https://gisgeography.com/choropleth-maps-data-classification/
 
 ## Colours
 
-Colour is one of the main ways you will denote thematic aggregate data on a choropleth map (height, or `z`--index being the other main option).
+Colour is one of the main ways you will denote thematic aggregate data on a choropleth map.
 QGIS has lots of colour palettes, and an absolutely fantastic resource if you need more palettes is:
 
 ```html
@@ -900,6 +907,7 @@ https://gridreferencefinder.com/postcodeBatchConverter/
 ```
 
 Under Step One paste your postcodes into the box (`CTRL`/`CMD` + `V`) and press `Convert Postcodes`.
+As we are using a `csv` file you may need to select csv from the 'Field Separator' dropdown if it does not automatically detect the format correctly.
 You can then select and copy the completed geocoded postcodes in `Step Three` which you can paste straight back into your spreadsheet, appending to the end columns.
 Save and close your spreadsheet.
 
@@ -930,7 +938,12 @@ To style the points right--click on the points layer in the Layers panel, press 
 
 A cursory comparison between the wealthy and deprived areas of London (with high and low life expectancy respectively) looks like there is a greater density of GP surgeries in wealthier areas.
 It is even possible to see Harley Street in the Westminster borough.
-We could (and should) test this formally as it might only be related to population, but for now it's an interesting hypothesis made possible by spatial data.
+At this stage think about the following questions:
+
+- Is there a greater density of GP practices in all areas with high life expectancy?
+- Are there any outliers (high life expectancy but low density, or vice versa)?
+- What other factors might affect GP practice density (e.g. population density)? How would you test this?
+- What other information would you like to have to assess this in more detail? Perhaps number of patients, number of complex needs patients, number of doctors, CQC rating, etc.?
 
 ![Our complete map with life expectancy by London borough and the location of GP practices](images/life-expectancy-gp-points-complete.png)
 
@@ -1029,19 +1042,11 @@ Congratulations, you've completed all the exercises!
 # What next?
 
 There is only so much it's possible to learn on a one day course, so this is very much an introduction to some of the fundamental features of GIS.
-Now you can think about analysing and interpreting your map, or use the map interactively to explore different areas of London.
-You could answer the following questions:
+You could use the time left to:
 
-- Is there a greater density of GP practices in areas with high life expectancy?
-- What other factors affect GP practice density (e.g. population density)? How would you test this?
-- Are there any outliers (high life expectancy but low density, or vice versa)?
-- What other information would you like to have to assess this in more detail? Perhaps number of patients, number of complex needs patients, number of doctors, CQC rating, etc.?
-
-If you have some time left you are welcome to use the time to:
-
-- Explore some of the more advanced QGIS options available in the GRASS toolbox
 - Try to map some of your own data for an administrative area of your choice
-- Render a 3d map (hint: look in the plugins menu)
+- Render a 3d map (hint: look in the plugins menu) of life expectancy
+- Explore some of the more advanced QGIS options available in the GRASS toolbox
 - Try to produce a cartogram (a cartogram *must* be scaled with count data; this life expectancy data is not suitable)
 
 Feel free to ask for help.
@@ -1087,6 +1092,12 @@ Contains Care Quality Commission data © Care Quality Commission (2019)
 Uses geocoded data from `https://gridreferencefinder.com/postcodeBatchConverter/` © 2014 UK Grid Reference Finder.
 
 Thanks to Dr. Tom Broomhead for his technical review of this document.
+
+
+# Copyright
+
+© 2019 Phil Mike Jones.
+
 
 
 # References
