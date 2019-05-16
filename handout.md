@@ -5,7 +5,7 @@ date: "24 May 2019"
 titlepage: true
 toc: true
 toc-own-page: true
-logo: images/uk-orthographic-projection.png
+logo: images/SRA-logo-rgb.png
 logo-width: 500
 ---
 
