@@ -3,6 +3,7 @@ public/
 
 # compiled pdfs
 *.pdf
+slides.html
 
 # exercises
 regions/*
