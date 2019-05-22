@@ -1,0 +1,16 @@
+---
+title: "Beginning mapping"
+author: Dr. Phil M. Jones
+date: "24 May 2019"
+output:
+  revealjs::revealjs_presentation:
+    center: true
+    css: https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap
+    highlight: espresso
+---
+
+- 9:30
+- 11:00 coffee
+- 12:45 lunch
+- 2:45 coffee
+- 4:30 finish
