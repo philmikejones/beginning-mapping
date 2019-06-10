@@ -1107,15 +1107,15 @@ http://casweb.ukdataservice.ac.uk/
 
 ### World
 
+StatSilk (https://www.statsilk.com/maps/download-free-shapefile-maps) maintain a list of up--to--date sources of shapefiles.
+Here are a few suggested sources:
+
 ```html
 https://data.humdata.org/search?ext_geodata=1
 http://download.geofabrik.de/
-http://www.diva-gis.org/Data
 https://gadm.org/data.html
 https://www.naturalearthdata.com/downloads/
 ```
-
-StatSilk (https://www.statsilk.com/maps/download-free-shapefile-maps) also maintain a list of up--to--date sources of shapefiles.
 
 
 ### Programming and interactive
