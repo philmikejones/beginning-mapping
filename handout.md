@@ -72,6 +72,7 @@ By the end of this course you will be able to:
 ## Before the course starts
 
 So that we can get started promptly on the day, before the course date it would help if you could download and install the software and some of the data we will be using.
+This will be especially true if you are using a work laptop that is managed by your organisation.
 
 You will need two pieces of software on the day.
 One is QGIS, which is the GIS software that we will use to produce our maps.
@@ -98,10 +99,8 @@ You can download LibreOffice from:
 https://www.libreoffice.org/download/download/
 ```
 
-Either version is fine, but if you are in any doubt choose the lower version number, currently 6.1.
+Either version is fine, but if you are in any doubt choose the lower version number ('stable', rather than 'fresh'), currently 6.1.
 Don't worry if you don't manage to install these; I can help you on the day if necessary.
-
-<!--TODO Add link to data download zip-->
 
 
 # Software
@@ -139,7 +138,7 @@ To do this open `Settings` > `Options` menu, and click the `Rendering` tab.
 
 Tick `Max cores to use` and enter a number.
 If you do not know how many cores your computer has QGIS is pretty good at detecting this, so click up until you can no longer increase the number of cores, then simply drop one.
-If in doubt, most consumer computers have four, so specify three and press `Ok`.
+If in doubt, most modern laptops have four, so specify three and press `Ok`.
 
 ### Default CRS
 
@@ -197,15 +196,11 @@ For these exercises we will download our boundary data from:
 https://census.ukdataservice.ac.uk/get-data/boundary-data.aspx
 ```
 
-<!-- TODO Screenshot of boundary website -->
-
 This service offers a comprehensive range of high quality shapefiles covering a range of administrative geographies for all of the UK.
 
 For our first map we will make a simple plot of regions in Great Britain (England, Wales, and Scotland).
 England has nine regions, while Scotland and Wales are each considered a region, making 11 in total.
 We will use the `Easy Download` service to download the regions of England, Scotland, and Wales individually, and we will combine these in QGIS.
-
-<!-- TODO Why am I not using Northern Ireland? I think it uses a different projection system -->
 
 Download and unzip the following files if you have not already downloaded the data archive:
 
