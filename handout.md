@@ -242,56 +242,6 @@ https://grass.osgeo.org/download/
 (If you're using Linux you can use your package manager to install `qgis-plugin-grass`, for example on an Ubuntu system run `sudo apt install qgis-plugin-grass`).
 
 
-## Projections and Coordinate Reference Systems
-
-To produce a map you must specify (or use the default) coordinate reference system (CRS).
-A coordinate reference system specifies:
-
-- how coordinates are assigned to points on the Earth, and
-- the origin and scale of the coordinate system.
-
-A projection describes how the three--dimensional surface of the Earth is distorted to fit a two--dimensional map, either on the screen or in print.
-You can explore the size of the distortions of the Mercator projection using
-
-```html
-https://thetruesize.com
-```
-
-Fundamentally the CRS and projection specifies what the coordinates 'mean' so the they can be plotted correctly, and as a result the two terms are often used interchangeably.
-
-The CRS and projection are often specified in the same step and in practice you will typically download a spatial data file and specify the correct CRS for that data.
-Often the data you download will have a CRS/projection bundled with it and when you load the file the correct CRS will be applied.
-For example, the English regions zip file contained a `.prj` file which QGIS uses to apply the correct CRS to the file as it is loaded.
-You can open these `.prj` files with any text editor and the contents looks something like this:
-
-```wkt
-PROJCS["OSGB_1936_British_National_Grid",GEOGCS["GCS_OSGB 1936",DATUM["D_OSGB_1936",SPHEROID["Airy_1830",6377563.396,299.3249646]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",49],PARAMETER["central_meridian",-2],PARAMETER["scale_factor",0.9996012717],PARAMETER["false_easting",400000],PARAMETER["false_northing",-100000],UNIT["Meter",1]]
-```
-
-This `.prj` specifies the British National Grid.
-It uses the OSGB 1936 coordinate system, the Airy 1830 spheroid (the Earth is not a perfect sphere), and the unit is metre (i.e. each unit increase in coordinate is equivalent to one metre).
-
-Don't worry too much about these; in practice most spatial data now specifies a CRS so this is automatic.
-You only need to know about these if:
-
-- the spatial data does not bundle a CRS and you need to specify it manually, or
-- you have data sets in different CRSs and you need to *transform* or *reproject* one or more data sets to be consistent (I describe how to do this below).
-
-If you are using UK data from sources such as the OS the CRS is almost certainly the British National Grid (27700).
-
-The CRS is specified using a unique code called an EPSG code.
-A full list of all EPSG codes can be obtained from:
-
-```html
-http://spatialreference.org/ref/epsg/
-```
-
-The EPSG codes for the two most common CRSs you will use (at least in the UK) are:
-
-- British National Grid `27700`
-- Mercator WGS84 (most common for web maps such as Google Maps) `4326`
-
-
 ## Opening spatial data in QGIS
 
 From the QGIS window (Figure \ref{qgis-interface}) use the browser in the left sidebar to navigate to your project folder.
@@ -353,6 +303,93 @@ If you wish to explore this the following link to the QGIS documentation will ge
 ```html
 https://docs.qgis.org/2.18/en/docs/user_manual/working_with_ogc/ogc_client_support.html
 ```
+
+
+## Projections and Coordinate Reference Systems
+
+To produce this map we have used a coordinate reference system.
+A coordinate reference system specifies:
+
+- how coordinates are assigned to points on the Earth, and
+- the origin and scale of the coordinate system.
+
+A projection describes how the three--dimensional surface of the Earth is distorted to fit a two--dimensional map, either on the screen or in print.
+You can explore the size of the distortions of the Mercator projection using
+
+```html
+https://thetruesize.com
+```
+
+Fundamentally the CRS and projection specifies what the coordinates 'mean' so the they can be plotted correctly, and as a result the two terms are often used interchangeably.
+The CRS and projection are often specified in the same step and in practice you will typically download a spatial data file which will specify the correct CRS for that data.
+For example, the English regions zip file contained a `.prj` file which QGIS uses to apply the correct CRS to the file as it is loaded.
+You can open these `.prj` files with any text editor and the contents looks something like this:
+
+```wkt
+PROJCS["OSGB_1936_British_National_Grid",GEOGCS["GCS_OSGB 1936",DATUM["D_OSGB_1936",SPHEROID["Airy_1830",6377563.396,299.3249646]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",49],PARAMETER["central_meridian",-2],PARAMETER["scale_factor",0.9996012717],PARAMETER["false_easting",400000],PARAMETER["false_northing",-100000],UNIT["Meter",1]]
+```
+
+This `.prj` specifies the British National Grid.
+It uses the OSGB 1936 coordinate system, the Airy 1830 spheroid (the Earth is not a perfect sphere), and the unit is metre (i.e. each unit increase in coordinate is equivalent to one metre).
+
+Realistically the only time you need to know about or change a CRS is if:
+
+- the spatial data does not bundle a CRS and you need to specify it manually, or
+- you have data sets in different CRSs and you need to *transform* or *reproject* one or more data sets to be consistent (I describe how to do this below).
+
+The CRS is specified using a unique code called an EPSG code.
+A full list of all EPSG codes can be obtained from:
+
+```html
+http://spatialreference.org/ref/epsg/
+```
+
+The EPSG codes for the two most common CRSs you will use (at least in the UK) are:
+
+- British National Grid `27700`
+- Mercator WGS84 (most common for web maps such as Google Maps) `4326`
+
+If you are using UK data from sources such as the OS the CRS is almost certainly the British National Grid (27700).
+
+
+### Converting between projections/CRS
+
+So far we have used layers with the same CRS.
+If you have multiple layers from different data sources it is common that one or more layers will be in a different CRS to the others, and you must convert these to a common CRS.
+
+One strategy is to transform one of the layers, permanently changing the coordinate system of the layer(s).
+The other strategy is to reproject the layer(s) on--the--fly so the reprojection is temporary.
+I find transforming is useful if I know I need to use the layer multiple times or perform analyses with it; temporarily reprojecting the layer(s) is useful for quickly exploring the layer and comparing with other sources.
+
+Download the Greater London OSM shapefile from `geofabrik`:
+
+```html
+http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip
+```
+
+Unzip the file to your working directory, and add the `gis_osm_water_a_free_1` layer (you may need to refresh your file browser or locate the `.shp` manually):
+
+![London waterways](images/london-waterways.png)
+
+This file uses a different CRS than the London shapefile (specifically it uses WGS84 (or EPSG: `4326`)).
+It is, however, projected in the same CRS as the original London layer:
+Notice in the bottom right the project CRS still shows `27700`.
+This has been reprojected on--the--fly to match the existing layer, so the two layers plot together correctly.
+If this doesn't happen automatically (typically because you haven't selected a default CRS), click the project CRS button in the bottom right and select the project CRS you want to use.
+If the file was not reprojected the Thames would not show up anywhere near London (to see what I mean open the project CRS and select 'No projection (or unknown/non--Earth projection)').
+
+
+![London waterways layer CRS is WGS84/EPSG: 4326](images/london-waterways-crs.png)
+
+To permanently change the CRS and coordinates of the layer we can *transform* or *reproject* the coordinates into a new CRS (more precisely we create a duplicate layer with the new CRS).
+Under the `Vector` > `Data Management Tools` menu select `Reproject Layer` and select the following options:
+
+- Input layer: `gis_osm_water_a_free_1`
+- Target CRS: `EPSG: 27700 - OSGB 1936 / British National Grid` (search for 27700)
+
+![Reproject layer dialogue](images/reproject-dialogue.png)
+
+Again, I suggest creating this as a temporary layer and saving it when you've verified it (QGIS will warn you if you forget to save it).
 
 
 ## Modifying boundary files
@@ -554,50 +591,9 @@ You can untick the regions and original LAD files and zoom to the extent of the 
 
 ![London Boroughs](images/clip-result.png)
 
-
 We have used three different ways (and even combined two) to select boundaries with QGIS.
 It is often the case that if you are using different layers from the same source the boundaries match and you can use clips (as we did with two layers from one source).
 In the wild, especially if using layers from different sources, it is often necessary to use the GUI or filter by expression tools (or a combination of both) to select the layers you need.
-
-
-## Converting between projections/CRS
-
-So far we have used layers with the same CRS (we discussed CRS in an earlier section).
-If you have multiple layers from different data sources it is common that one or more layers will be in a different CRS to the others, and you must convert these to a common CRS.
-
-One strategy is to transform one of the layers, permanently changing the coordinate system of the layer(s).
-The other strategy is to reproject the layer(s) on--the--fly so the reprojection is temporary.
-I find transforming is useful if I know I need to use the layer multiple times or perform analyses with it; temporarily reprojecting the layer(s) is useful for quickly exploring the layer and comparing with other sources.
-
-Download the Greater London OSM shapefile from `geofabrik`:
-
-```html
-http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip
-```
-
-Unzip the file to your working directory, and add the `gis_osm_water_a_free_1` layer (you may need to refresh your file browser or locate the `.shp` manually):
-
-![London waterways](images/london-waterways.png)
-
-This file uses a different CRS than the London shapefile (specifically it uses WGS84 (or EPSG: `4326`)).
-It is, however, projected in the same CRS as the original London layer:
-Notice in the bottom right the project CRS still shows `27700`.
-This has been reprojected on--the--fly to match the existing layer, so the two layers plot together correctly.
-If this doesn't happen automatically (typically because you haven't selected a default CRS), click the project CRS button in the bottom right and select the project CRS you want to use.
-If the file was not reprojected the Thames would not show up anywhere near London (to see what I mean open the project CRS and select 'No projection (or unknown/non--Earth projection)').
-
-
-![London waterways layer CRS is WGS84/EPSG: 4326](images/london-waterways-crs.png)
-
-To permanently change the CRS and coordinates of the layer we can *transform* or *reproject* the coordinates into a new CRS (more precisely we create a duplicate layer with the new CRS).
-Under the `Vector` > `Data Management Tools` menu select `Reproject Layer` and select the following options:
-
-- Input layer: `gis_osm_water_a_free_1`
-- Target CRS: `EPSG: 27700 - OSGB 1936 / British National Grid` (search for 27700)
-
-![Reproject layer dialogue](images/reproject-dialogue.png)
-
-Again, I suggest creating this as a temporary layer and saving it when you've verified it (QGIS will warn you if you forget to save it).
 
 
 # Thematic data
