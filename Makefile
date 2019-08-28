@@ -5,10 +5,10 @@ all: \
 
 handout.pdf: handout.md
 	pandoc handout.md -o handout.pdf \
-	--template eisvogel -V lang=en-GB \
+	--template ~/.pandoc/templates/handout.latex -V lang=en-GB \
 	--listings --highlight-style espresso
 
 crib.pdf: crib.md
 	pandoc crib.md -o crib.pdf \
-	--template eisvogel -V lang=en-GB \
+	--template ~/.pandoc/templates/handout.latex -V lang=en-GB \
 	--listings --highlight-style espresso
